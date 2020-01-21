@@ -1,16 +1,19 @@
 import React from "react";
 
-import { Flex } from "rebass";
+import { Flex, Box } from "rebass";
 import Logo from "component/atoms/logo/Logo";
 import NaviGroup from "component/molecules/naviGroup/NaviGroup";
 
-type HeaderProps = {};
+import { headerStyle, wrapHeaderStyle } from "./Header.styled";
 
 function Header() {
   return (
-    <Flex>
-      <Logo></Logo>
-      <NaviGroup></NaviGroup>
+    <Flex sx={wrapHeaderStyle}>
+      <Flex sx={headerStyle}>
+        <Logo></Logo>
+        <Box mx="auto" />
+        <NaviGroup></NaviGroup>
+      </Flex>
     </Flex>
   );
 }
