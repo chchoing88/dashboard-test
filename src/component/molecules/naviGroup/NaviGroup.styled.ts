@@ -1,3 +1,3 @@
-export const NaviGroupStyle = {
+export const naviGroupStyle = {
   alignSelf: "center"
 };

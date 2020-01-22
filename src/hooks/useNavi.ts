@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { INaviItem, NaviClickHandler, NaviHooks } from "../types";
+import { INaviItem, NaviClickHandler, NaviHooks } from "@types";
 
 const NAVI_INIT_STATE: INaviItem[] = [
   {

@@ -1,7 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { INaviItem, NaviClickHandler } from "@types";
 
-import { INaviItem, NaviClickHandler } from "types";
+import { Link as RouterLink } from "react-router-dom";
+import { Box } from "rebass";
+import { styleNaviLink } from "./Navi.styled";
 
 type NaviProps = {
   naviItem: INaviItem;
@@ -9,11 +11,18 @@ type NaviProps = {
 };
 
 function Navi({ naviItem, onClick }: NaviProps) {
-  const { id, name, path } = naviItem;
+  const { id, name, path, isActive } = naviItem;
+
   return (
-    <Link to={path} onClick={() => onClick(id)}>
-      {name}
-    </Link>
+    <Box
+      as="span"
+      variant={isActive ? "activeNavi" : "defaultNavi"}
+      sx={styleNaviLink}
+    >
+      <RouterLink to={path} onClick={() => onClick(id)}>
+        {name}
+      </RouterLink>
+    </Box>
   );
 }
 
