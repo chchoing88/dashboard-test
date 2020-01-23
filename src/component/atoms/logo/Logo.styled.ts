@@ -1,4 +1,10 @@
 export const logoStyle = {
-  alignSelf: "center",
-  m: [3, 2, 1, 0] // 3은 기본
+  a: {
+    display: "flex",
+    pt: "2px",
+    height: "100%",
+    alignItems: "center",
+    color: "#fff",
+    boxSizing: "border-box"
+  }
 };

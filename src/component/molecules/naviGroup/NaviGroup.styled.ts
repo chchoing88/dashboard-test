@@ -1,3 +1,5 @@
 export const naviGroupStyle = {
-  alignSelf: "center"
+  mr: "-16px",
+  alignItems: "center",
+  alignSelf: "stretch"
 };

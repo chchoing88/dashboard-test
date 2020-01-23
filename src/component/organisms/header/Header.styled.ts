@@ -1,9 +1,13 @@
-export const headerStyle = {
-  width: "1280px"
+export const wrapHeaderStyle = {
+  height: "55px",
+  borderBottom: "1px solid rgba(34, 36, 38, 0.15)",
+  bg: "primary",
+  justifyContent: "center",
+  alignItems: "center",
+  px: 3
 };
 
-export const wrapHeaderStyle = {
-  height: "48px",
-  borderBottom: "1px solid rgba(34, 36, 38, 0.15)",
-  justifyContent: "center"
+export const headerStyle = {
+  width: "1280px",
+  height: "100%"
 };

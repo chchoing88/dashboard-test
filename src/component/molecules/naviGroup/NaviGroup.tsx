@@ -3,7 +3,7 @@ import useNavi from "hooks/useNavi";
 
 import { INaviItem } from "@types";
 
-import { Box } from "rebass";
+import { Flex } from "rebass";
 import Navi from "component/atoms/navi/Navi";
 
 import { naviGroupStyle } from "./NaviGroup.styled";
@@ -12,7 +12,7 @@ function NaviGroup() {
   const [naviListState, onNaviClick] = useNavi();
 
   return (
-    <Box sx={naviGroupStyle}>
+    <Flex sx={naviGroupStyle}>
       {naviListState.map((naviItem: INaviItem) => (
         <Navi
           key={naviItem.id}
@@ -20,7 +20,7 @@ function NaviGroup() {
           onClick={onNaviClick}
         ></Navi>
       ))}
-    </Box>
+    </Flex>
   );
 }
 

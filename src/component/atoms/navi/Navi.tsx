@@ -14,11 +14,7 @@ function Navi({ naviItem, onClick }: NaviProps) {
   const { id, name, path, isActive } = naviItem;
 
   return (
-    <Box
-      as="span"
-      variant={isActive ? "activeNavi" : "defaultNavi"}
-      sx={styleNaviLink}
-    >
+    <Box variant={isActive ? "activeNavi" : "defaultNavi"} sx={styleNaviLink}>
       <RouterLink to={path} onClick={() => onClick(id)}>
         {name}
       </RouterLink>

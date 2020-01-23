@@ -1,4 +1,15 @@
-export const styleNaviLink = { a: { color: "inherit" } };
+export const styleNaviLink = {
+  alignSelf: "stretch",
+  a: {
+    display: "flex",
+    height: "100%",
+    px: 3,
+    alignItems: "center",
+    fontSize: 2,
+    color: "inherit",
+    boxSizing: "border-box"
+  }
+};
 
 // type StyleLinkProps = {
 //   isActive: boolean;
