@@ -12,14 +12,19 @@ interface Thmeme {
 const theme: Thmeme = {
   breakpoints: ["360px", "720px", "1280px"],
   colors: {
-    primary: "#4F9DDA",
-    secondary: "#F3F3F7"
+    point: "#4F9DDA",
+    base: "#F3F3F7",
+    content: "#8B8B8B",
+    title: "#202020"
   },
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64],
+  fontSizes: [12, 14, 16, 20, 24, 28, 32, 48, 64],
   space: [0, 4, 8, 16, 32, 64, 128, 256],
   text: {
     heading: {
       fontSize: [2, 2, 3]
+    },
+    secondaryHeading: {
+      fontSize: [3, 3, 5]
     }
   },
   variants: {

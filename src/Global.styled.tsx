@@ -2,6 +2,10 @@ import { css } from "@emotion/core";
 
 export const GlobalStyle = css`
   body,
+  html {
+    height: 100%;
+  }
+  body,
   div,
   dl,
   dt,
@@ -122,5 +126,8 @@ export const GlobalStyle = css`
   var {
     font-style: normal;
     font-weight: normal;
+  }
+  #root {
+    height: 100%;
   }
 `;
