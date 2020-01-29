@@ -8,13 +8,13 @@ import { headerStyle, wrapHeaderStyle } from "./Header.styled";
 
 function Header() {
   return (
-    <Flex sx={wrapHeaderStyle}>
+    <Box sx={wrapHeaderStyle}>
       <Flex sx={headerStyle}>
         <Logo></Logo>
         <Box mx="auto" />
         <NaviGroup></NaviGroup>
       </Flex>
-    </Flex>
+    </Box>
   );
 }
 

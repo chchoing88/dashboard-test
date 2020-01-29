@@ -95,7 +95,7 @@ export const GlobalStyle = css`
     -webkit-appearance: none;
   }
   body {
-    background: #fff;
+    background-color: #f3f3f7;
   }
   body,
   th,

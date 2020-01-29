@@ -12,13 +12,14 @@ interface Thmeme {
 const theme: Thmeme = {
   breakpoints: ["360px", "720px", "1280px"],
   colors: {
-    point: "#4F9DDA",
+    point: "#497adc",
     base: "#F3F3F7",
     content: "#8B8B8B",
-    title: "#202020"
+    title: "#202020",
+    clean: "#fff"
   },
   fontSizes: [12, 14, 16, 20, 24, 28, 32, 48, 64],
-  space: [0, 4, 8, 16, 32, 64, 128, 256],
+  space: [0, 4, 8, 16, 24, 32, 64, 128, 256],
   text: {
     heading: {
       fontSize: [2, 2, 3]
@@ -27,14 +28,34 @@ const theme: Thmeme = {
       fontSize: [3, 3, 5]
     }
   },
+  shadows: {
+    card: "0 0 4px rgba(0, 0, 0, 0.125)"
+  },
+  buttons: {
+    identifier: {
+      bg: "point"
+    }
+  },
   variants: {
     activeNavi: {
-      color: "#fff",
-      backgroundColor: "#2A7FB6"
+      color: "clean",
+      bg: "#282c34"
     },
     defaultNavi: {
-      color: "#fff",
-      backgroundColor: "primary"
+      color: "#aaa",
+      bg: "primary"
+    },
+    widgetCard: {
+      bg: "clean",
+      boxShadow: "card",
+      borderWidth: "1px",
+      borderStyle: "solid",
+      borderColor: "rgb(212, 212, 213)"
+    },
+    section: {
+      px: 3,
+      py: 3,
+      bg: "clean"
     }
   }
 };

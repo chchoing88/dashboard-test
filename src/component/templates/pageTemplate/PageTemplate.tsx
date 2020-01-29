@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Box } from "rebass";
+import { Box } from "rebass";
 
 type PageTemplateProps = {
   children: React.ReactNode;
@@ -9,11 +9,10 @@ function PageTemplate({ children }: PageTemplateProps) {
   return (
     <Box
       sx={{
-        height: "100%",
-        backgroundColor: "base"
+        minWidth: "1280px"
       }}
     >
-      <Flex
+      <Box
         sx={{
           width: "1280px",
           mx: "auto",
@@ -21,7 +20,7 @@ function PageTemplate({ children }: PageTemplateProps) {
         }}
       >
         {children}
-      </Flex>
+      </Box>
     </Box>
   );
 }
