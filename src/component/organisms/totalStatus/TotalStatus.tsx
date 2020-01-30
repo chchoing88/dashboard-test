@@ -1,46 +1,29 @@
 import React from "react";
-import { Box, Text } from "rebass";
+import { Box } from "rebass";
 
-import FilterButton from "component/atoms/filterButton/FilterButton";
+import ThreeStageGrid from "component/molecules/threeStageGrid/ThreeStageGrid";
+import FilterSection from "component/molecules/filterSection/FilterSection";
+
+import { IFilterButton } from "@types";
+const test: IFilterButton[] = [
+  { id: "adid", name: "adid", isActive: true },
+  { id: "aid", name: "aid", isActive: false },
+  { id: "account id", name: "account id", isActive: false }
+];
 
 function TotalStatus() {
   return (
     <Box variant="section" sx={{ mt: 4 }}>
-      <Text as="span">기준 식별자 : </Text>
+      <FilterSection
+        title="기준 식별자"
+        filterButtonList={test}
+      ></FilterSection>
 
-      <FilterButton name="ACCOUNT" onClick={e => {}} />
-
-      <Box sx={{ overflow: "hidden", mx: "-16px" }}>
-        <Box
-          sx={{
-            width: "33.33%",
-            float: "left",
-            px: 3
-          }}
-        ></Box>
-        <Box
-          sx={{
-            width: "33.33%",
-            float: "left",
-            px: 3
-          }}
-        >
-          <Box bg="pink" height="100px">
-            2
-          </Box>
-        </Box>
-        <Box
-          sx={{
-            width: "33.33%",
-            float: "left",
-            px: 3
-          }}
-        >
-          <Box bg="green" height="100px">
-            3
-          </Box>
-        </Box>
-      </Box>
+      <ThreeStageGrid
+        col1={<div>1</div>}
+        col2={<div>2</div>}
+        col3={<div>3</div>}
+      />
     </Box>
   );
 }

@@ -1,16 +1,23 @@
 import React from "react";
-import { Button } from "rebass";
+import { Button, Box } from "rebass";
 
-import { filterButtonStyle } from "./FilterButton.styled";
+import { IFilterButton } from "@types";
+import { filterButtonStyle, circleStyle } from "./FilterButton.styled";
 
 type FilterButtonProps = {
-  name: string;
+  buttonItem: IFilterButton;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-function FilterButton({ name, onClick }: FilterButtonProps) {
+function FilterButton({ buttonItem, onClick }: FilterButtonProps) {
+  const { name, isActive } = buttonItem;
   return (
-    <Button variant="identifier" sx={filterButtonStyle} onClick={onClick}>
+    <Button
+      variant="identifier"
+      sx={filterButtonStyle(isActive)}
+      onClick={onClick}
+    >
+      <Box as="span" sx={circleStyle(isActive)}></Box>
       {name}
     </Button>
   );

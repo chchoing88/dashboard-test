@@ -13,3 +13,15 @@ export interface INaviItem {
 
 export type NaviClickHandler = (id: INaviName[keyof INaviName]) => void;
 export type NaviHooks = [INaviItem[], NaviClickHandler];
+
+interface IFilterButtonName {
+  readonly ADID: "adid";
+  readonly AID: "aid";
+  readonly ACCOUNTID: "account id";
+}
+
+export interface IFilterButton {
+  id: IFilterButtonName[keyof IFilterButtonName];
+  name: string;
+  isActive: boolean;
+}

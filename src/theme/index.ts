@@ -37,14 +37,6 @@ const theme: Thmeme = {
     }
   },
   variants: {
-    activeNavi: {
-      color: "clean",
-      bg: "#282c34"
-    },
-    defaultNavi: {
-      color: "#aaa",
-      bg: "primary"
-    },
     widgetCard: {
       bg: "clean",
       boxShadow: "card",
