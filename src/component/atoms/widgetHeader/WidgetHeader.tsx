@@ -1,13 +1,13 @@
 import React from "react";
-import { Box } from "rebass";
+import { Text, BoxProps } from "rebass";
 
-type WidgetHeaderProps = {
+interface WidgetHeaderProps extends BoxProps {
   title: string;
-};
+}
 
-function WidgetHeader({ title }: WidgetHeaderProps) {
+function WidgetHeader({ title, ...rest }: WidgetHeaderProps) {
   return (
-    <Box
+    <Text
       as="strong"
       sx={{
         display: "block",
@@ -19,9 +19,10 @@ function WidgetHeader({ title }: WidgetHeaderProps) {
         textAlign: "center",
         fontSize: 2
       }}
+      {...rest}
     >
       {title}
-    </Box>
+    </Text>
   );
 }
 

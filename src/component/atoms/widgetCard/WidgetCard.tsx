@@ -1,12 +1,16 @@
 import React from "react";
-import { Box } from "rebass";
+import { Box, BoxProps } from "rebass";
 
-type WidgetCardProps = {
-  children: React.ReactNode;
-};
+interface WidgetCardProps extends BoxProps {
+  children: React.ReactElement[] | React.ReactElement;
+}
 
-function WidgetCard({ children }: WidgetCardProps) {
-  return <Box variant="widgetCard">{children}</Box>;
+function WidgetCard({ children, ...rest }: WidgetCardProps) {
+  return (
+    <Box variant="widgetCard" {...rest}>
+      {children}
+    </Box>
+  );
 }
 
 export default WidgetCard;

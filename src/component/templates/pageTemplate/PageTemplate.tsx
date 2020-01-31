@@ -2,7 +2,7 @@ import React from "react";
 import { Box } from "rebass";
 
 type PageTemplateProps = {
-  children: React.ReactNode;
+  children: React.ReactElement[] | React.ReactElement;
 };
 
 function PageTemplate({ children }: PageTemplateProps) {

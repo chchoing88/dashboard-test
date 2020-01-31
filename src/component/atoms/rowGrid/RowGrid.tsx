@@ -2,14 +2,18 @@ import React from "react";
 import { Box, BoxProps } from "rebass";
 
 interface RowGridProps extends BoxProps {
-  children: React.ReactNode;
+  children: React.ReactElement[] | React.ReactElement;
 }
 
 function RowGrid({ children, ...rest }: RowGridProps) {
   return (
     <Box
       sx={{
-        overflow: "hidden"
+        "&:after": {
+          display: "block",
+          clear: "both",
+          content: "''"
+        }
       }}
       {...rest}
     >

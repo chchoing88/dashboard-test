@@ -1,23 +1,26 @@
 import React from "react";
-import { Button, Box } from "rebass";
+import { Button, ButtonProps } from "rebass";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 import { IFilterButton } from "@types";
-import { filterButtonStyle, circleStyle } from "./FilterButton.styled";
+import { filterButtonStyle } from "./FilterButton.styled";
 
-type FilterButtonProps = {
+interface FilterButtonProps extends ButtonProps {
   buttonItem: IFilterButton;
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-};
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+}
 
-function FilterButton({ buttonItem, onClick }: FilterButtonProps) {
+function FilterButton({ buttonItem, onClick, ...rest }: FilterButtonProps) {
   const { name, isActive } = buttonItem;
   return (
     <Button
       variant="identifier"
       sx={filterButtonStyle(isActive)}
       onClick={onClick}
+      {...rest}
     >
-      <Box as="span" sx={circleStyle(isActive)}></Box>
+      {isActive && <FontAwesomeIcon icon={faCheck}></FontAwesomeIcon>}
       {name}
     </Button>
   );

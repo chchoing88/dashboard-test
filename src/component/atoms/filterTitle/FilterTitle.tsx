@@ -1,16 +1,17 @@
 import React from "react";
-import { Box } from "rebass";
+import { Box, BoxProps } from "rebass";
 
-type FilterTitleProps = {
+interface FilterTitleProps extends BoxProps {
   title: string;
-};
+}
 
-function FilterTitle({ title }: FilterTitleProps) {
+function FilterTitle({ title, ...rest }: FilterTitleProps) {
   return (
     <Box
       sx={{
         color: "content"
       }}
+      {...rest}
     >
       {title}
     </Box>

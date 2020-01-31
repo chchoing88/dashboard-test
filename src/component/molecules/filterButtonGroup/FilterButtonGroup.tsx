@@ -10,7 +10,11 @@ function FilterButtonGroup({ filterButtonList }: FilterButtonGroupProps) {
   return (
     <>
       {filterButtonList.map(buttonItem => (
-        <FilterButton buttonItem={buttonItem} onClick={() => {}} />
+        <FilterButton
+          key={buttonItem.id}
+          buttonItem={buttonItem}
+          onClick={e => {}}
+        />
       ))}
     </>
   );

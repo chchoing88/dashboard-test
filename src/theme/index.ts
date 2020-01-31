@@ -29,7 +29,7 @@ const theme: Thmeme = {
     }
   },
   shadows: {
-    card: "0 0 4px rgba(0, 0, 0, 0.125)"
+    card: "rgba(0, 0, 0, 0.125) 0px 0px 4px;"
   },
   buttons: {
     identifier: {
@@ -39,13 +39,13 @@ const theme: Thmeme = {
   variants: {
     widgetCard: {
       bg: "clean",
-      boxShadow: "card",
-      borderWidth: "1px",
-      borderStyle: "solid",
-      borderColor: "rgb(212, 212, 213)"
+      boxShadow: "card"
+      // borderWidth: "1px",
+      // borderStyle: "solid",
+      // borderColor: "rgb(212, 212, 213)"
     },
     section: {
-      px: 3,
+      px: 4,
       py: 3,
       bg: "clean"
     }

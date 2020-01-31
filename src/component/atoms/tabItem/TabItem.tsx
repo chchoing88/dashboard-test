@@ -1,17 +1,16 @@
 import React from "react";
 import { Box, BoxProps } from "rebass";
 
-interface DtProps extends BoxProps {
+interface TabItemProps extends BoxProps {
   children: React.ReactElement;
 }
 
-function Dt({ children, ...rest }: DtProps) {
+function TabItem({ children, ...rest }: TabItemProps) {
   return (
     <Box
-      as="dt"
+      as="li"
       sx={{
-        float: "left",
-        width: "70px"
+        float: "left"
       }}
       {...rest}
     >
@@ -20,4 +19,4 @@ function Dt({ children, ...rest }: DtProps) {
   );
 }
 
-export default Dt;
+export default TabItem;

@@ -2,7 +2,7 @@ import React from "react";
 import { Box, BoxProps } from "rebass";
 
 interface DlProps extends BoxProps {
-  children: React.ReactNode;
+  children: React.ReactElement[];
 }
 
 function Dl({ children, ...rest }: DlProps) {
