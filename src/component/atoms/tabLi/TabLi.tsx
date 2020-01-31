@@ -1,11 +1,11 @@
 import React from "react";
 import { Box, BoxProps } from "rebass";
 
-interface TabItemProps extends BoxProps {
+interface TabLiProps extends BoxProps {
   children: React.ReactElement;
 }
 
-function TabItem({ children, ...rest }: TabItemProps) {
+function TabLi({ children, ...rest }: TabLiProps) {
   return (
     <Box
       as="li"
@@ -19,4 +19,4 @@ function TabItem({ children, ...rest }: TabItemProps) {
   );
 }
 
-export default TabItem;
+export default TabLi;

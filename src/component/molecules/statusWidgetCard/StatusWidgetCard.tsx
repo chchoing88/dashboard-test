@@ -3,7 +3,6 @@ import { Text } from "rebass";
 import WidgetCard from "component/atoms/widgetCard/WidgetCard";
 import WidgetHeader from "component/atoms/widgetHeader/WidgetHeader";
 import EmpFigures from "component/atoms/empFigures/EmpFigures";
-import TabList from "component/atoms/tabList/TabList";
 
 type StatusWidgetCardProps = {
   title: string;
@@ -35,10 +34,10 @@ function StatusWidgetCard() {
         </Text>
       </EmpFigures>
 
-      <TabList>
+      {/* <TabList>
         <div>안녕</div>
         <div>안녕</div>
-      </TabList>
+      </TabList> */}
     </WidgetCard>
   );
 }
