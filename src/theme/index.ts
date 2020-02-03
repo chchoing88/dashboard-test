@@ -16,7 +16,8 @@ const theme: Thmeme = {
     base: "#F3F3F7",
     content: "#8B8B8B",
     title: "#202020",
-    clean: "#fff"
+    clean: "#fff",
+    black: "#333"
   },
   fontSizes: [12, 14, 16, 20, 24, 28, 32, 48, 64],
   space: [0, 4, 8, 16, 24, 32, 48, 64, 128, 256],
@@ -34,6 +35,12 @@ const theme: Thmeme = {
   buttons: {
     identifier: {
       bg: "point"
+    },
+    tab: {
+      width: "100%",
+      color: "black",
+      fontSizes: 2,
+      outline: "none"
     }
   },
   variants: {

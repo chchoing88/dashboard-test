@@ -1,26 +1,6 @@
 import { useState } from "react";
 import { INaviItem, NaviClickHandler, NaviHooks } from "types";
-
-const NAVI_INIT_STATE: INaviItem[] = [
-  {
-    id: "home",
-    name: "전체 현황",
-    path: "/",
-    isActive: true
-  },
-  {
-    id: "analysis",
-    name: "사용자분석",
-    path: "/analysis",
-    isActive: false
-  },
-  {
-    id: "tag",
-    name: "카테고리 태그",
-    path: "/tag",
-    isActive: false
-  }
-];
+import { NAVI_INIT_STATE } from "../constants";
 
 function useNavi(): NaviHooks {
   const [naviListState, setNaviListState] = useState<INaviItem[]>(

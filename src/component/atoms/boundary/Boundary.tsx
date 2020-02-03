@@ -1,17 +1,16 @@
 import React from "react";
 import { Box, BoxProps } from "rebass";
 
-interface TabBoundaryProps extends BoxProps {}
+interface BoundaryProps extends BoxProps {}
 
-function TabBoundary({ ...rest }: TabBoundaryProps) {
+function Boundary({ ...rest }: BoundaryProps) {
   return (
     <Box
       sx={{
         position: "absolute",
         bg: "rgba(0,0,0,.1)",
         width: "1px",
-        top: "20px",
-        bottom: "20px",
+        height: "20px",
         left: "0"
       }}
       {...rest}
@@ -19,4 +18,4 @@ function TabBoundary({ ...rest }: TabBoundaryProps) {
   );
 }
 
-export default TabBoundary;
+export default Boundary;
