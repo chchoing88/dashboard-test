@@ -1,7 +1,7 @@
 import React from "react";
 import useNavi from "hooks/useNavi";
 
-import { INaviItem } from "@types";
+import { INaviItem } from "types";
 
 import { Flex } from "rebass";
 import Navi from "component/atoms/navi/Navi";

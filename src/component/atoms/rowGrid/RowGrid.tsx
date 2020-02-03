@@ -9,6 +9,7 @@ function RowGrid({ children, ...rest }: RowGridProps) {
   return (
     <Box
       sx={{
+        mx: "-16px",
         "&:after": {
           display: "block",
           clear: "both",

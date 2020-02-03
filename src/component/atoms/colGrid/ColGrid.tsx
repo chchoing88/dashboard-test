@@ -10,7 +10,8 @@ function ColGrid({ children, ...rest }: ColGridProps) {
     <Box
       sx={{
         float: "left",
-        width: "8.33%"
+        width: "8.33%",
+        px: 3
       }}
       {...rest}
     >

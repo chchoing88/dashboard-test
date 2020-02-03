@@ -1,5 +1,5 @@
 import React from "react";
-import { INaviItem, NaviClickHandler } from "@types";
+import { INaviItem, NaviClickHandler } from "types";
 
 import { Link as RouterLink } from "react-router-dom";
 import { Box } from "rebass";

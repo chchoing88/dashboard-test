@@ -1,6 +1,6 @@
 import React from "react";
 import FilterButton from "component/atoms/filterButton/FilterButton";
-import { IFilterButton } from "@types";
+import { IFilterButton } from "types";
 
 type FilterButtonGroupProps = {
   filterButtonList: IFilterButton[];

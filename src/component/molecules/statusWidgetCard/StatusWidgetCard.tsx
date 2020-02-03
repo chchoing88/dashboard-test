@@ -3,13 +3,14 @@ import { Text } from "rebass";
 import WidgetCard from "component/atoms/widgetCard/WidgetCard";
 import WidgetHeader from "component/atoms/widgetHeader/WidgetHeader";
 import EmpFigures from "component/atoms/empFigures/EmpFigures";
+import StatusSubList from "component/molecules/statusSubList/StatusSubList";
 
 type StatusWidgetCardProps = {
   title: string;
   figure: number;
   unit: string;
 };
-// {overall: 44011299, interest: 39301944, poi: 42842842}
+// {overall: 44011299, interest: 39301944, poi: 42842842, 소비: 3123392}
 
 function StatusWidgetCard() {
   return (
@@ -34,10 +35,7 @@ function StatusWidgetCard() {
         </Text>
       </EmpFigures>
 
-      {/* <TabList>
-        <div>안녕</div>
-        <div>안녕</div>
-      </TabList> */}
+      <StatusSubList subList={[{}, {}, {}]}></StatusSubList>
     </WidgetCard>
   );
 }

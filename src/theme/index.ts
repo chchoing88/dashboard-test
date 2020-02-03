@@ -19,7 +19,7 @@ const theme: Thmeme = {
     clean: "#fff"
   },
   fontSizes: [12, 14, 16, 20, 24, 28, 32, 48, 64],
-  space: [0, 4, 8, 16, 24, 32, 64, 128, 256],
+  space: [0, 4, 8, 16, 24, 32, 48, 64, 128, 256],
   text: {
     heading: {
       fontSize: [2, 2, 3]
@@ -29,7 +29,7 @@ const theme: Thmeme = {
     }
   },
   shadows: {
-    card: "rgba(0, 0, 0, 0.125) 0px 0px 4px;"
+    card: "0 7px 30px -10px rgba(150,170,180,0.5);"
   },
   buttons: {
     identifier: {
@@ -40,13 +40,10 @@ const theme: Thmeme = {
     widgetCard: {
       bg: "clean",
       boxShadow: "card"
-      // borderWidth: "1px",
-      // borderStyle: "solid",
-      // borderColor: "rgb(212, 212, 213)"
     },
     section: {
       px: 4,
-      py: 3,
+      py: 5,
       bg: "clean"
     }
   }

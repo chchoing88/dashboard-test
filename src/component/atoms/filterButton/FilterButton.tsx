@@ -3,7 +3,7 @@ import { Button, ButtonProps } from "rebass";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
-import { IFilterButton } from "@types";
+import { IFilterButton } from "types";
 import { filterButtonStyle } from "./FilterButton.styled";
 
 interface FilterButtonProps extends ButtonProps {

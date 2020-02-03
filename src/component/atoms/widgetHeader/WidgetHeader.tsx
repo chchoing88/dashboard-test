@@ -12,9 +12,9 @@ function WidgetHeader({ title, ...rest }: WidgetHeaderProps) {
       sx={{
         display: "block",
         py: 2,
-        borderBottomWidth: "1px",
-        borderBottomStyle: "solid",
-        borderBottomColor: "rgb(212, 212, 213)",
+        // borderBottomWidth: "1px",
+        // borderBottomStyle: "solid",
+        // borderBottomColor: "rgba(0,0,0,.1)",
         bg: "base",
         textAlign: "center",
         fontSize: 2

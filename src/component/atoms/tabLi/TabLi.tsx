@@ -2,7 +2,7 @@ import React from "react";
 import { Box, BoxProps } from "rebass";
 
 interface TabLiProps extends BoxProps {
-  children: React.ReactElement;
+  children: (React.ReactElement | boolean)[] | React.ReactElement;
 }
 
 function TabLi({ children, ...rest }: TabLiProps) {
@@ -10,6 +10,7 @@ function TabLi({ children, ...rest }: TabLiProps) {
     <Box
       as="li"
       sx={{
+        position: "relative",
         float: "left"
       }}
       {...rest}

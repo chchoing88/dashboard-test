@@ -6,7 +6,7 @@ import Dd from "component/atoms/dd/Dd";
 import FilterTitle from "component/atoms/filterTitle/FilterTitle";
 import FilterButtonGroup from "component/molecules/filterButtonGroup/FilterButtonGroup";
 
-import { IFilterButton } from "@types";
+import { IFilterButton } from "types";
 
 type FilterSectionProps = {
   title: string;
@@ -18,7 +18,7 @@ function FilterSection({ title, filterButtonList }: FilterSectionProps) {
     <Dl>
       <Dt
         css={{
-          marginTop: "6px"
+          marginTop: "5px"
         }}
       >
         <FilterTitle title={title}></FilterTitle>
