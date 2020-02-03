@@ -1,3 +1,8 @@
+export interface IActiveBehavior<T> {
+  isActive: boolean;
+  id: T;
+}
+
 export interface INaviName {
   HOME: "home";
   ANALYSIS: "analysis";
@@ -40,24 +45,24 @@ export interface IDataCollectionName {
   ACCOUNTID: "account id";
 }
 
-export interface IFilterButton {
-  id: Readonly<IDataCollectionId>[keyof IDataCollectionId];
+export interface IFilterButton
+  extends IActiveBehavior<
+    Readonly<IDataCollectionId>[keyof IDataCollectionId]
+  > {
   name: Readonly<IDataCollectionName>[keyof IDataCollectionName];
-  isActive: boolean;
 }
 
 export interface ITabId extends IUfoCategoryId {}
 
 export interface ITabName extends IUfoCategoryName {}
 
-export interface ITabItem {
-  id: Readonly<ITabId>[keyof ITabId];
+export interface ITabItem
+  extends IActiveBehavior<Readonly<ITabId>[keyof ITabId]> {
   name: Readonly<ITabName>[keyof ITabName];
-  isActive: boolean;
 }
 export type TabClickHandler = (id: Readonly<ITabId>[keyof ITabId]) => void;
 export type TabHooks = {
   currentTabData: ITabItem;
-  tabListState: ITabItem[];
+  tabList: ITabItem[];
   onHandleTabClick: TabClickHandler;
 };

@@ -4,16 +4,20 @@ import { IFilterButton } from "types";
 
 type FilterButtonGroupProps = {
   filterButtonList: IFilterButton[];
+  onClick: () => void;
 };
 
-function FilterButtonGroup({ filterButtonList }: FilterButtonGroupProps) {
+function FilterButtonGroup({
+  filterButtonList,
+  onClick
+}: FilterButtonGroupProps) {
   return (
     <>
       {filterButtonList.map(buttonItem => (
         <FilterButton
           key={buttonItem.id}
           buttonItem={buttonItem}
-          onClick={e => {}}
+          onClick={onClick}
         />
       ))}
     </>

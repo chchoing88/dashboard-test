@@ -1,4 +1,5 @@
 import React from "react";
+import useFilter from "hooks/useFilter";
 import { Box } from "rebass";
 
 import RowGrid from "component/atoms/rowGrid/RowGrid";
@@ -9,18 +10,17 @@ import StatusWidgetCard from "component/organisms/statusWidgetCard/StatusWidgetC
 import TagOccupancyCard from "component/organisms/tagOccupancyCard/TagOccupancyCard";
 import TagTopCard from "component/organisms/tagTopCard/TagTopCard";
 
-import {
-  FILTER_LIST,
-  TAB_OCCUPANCY_LIST,
-  TAB_TOP_LIST
-} from "../../../constants";
+import { FILTER_LIST } from "../../../constants";
 
 function TotalStatus() {
+  useFilter();
+
   return (
     <Box variant="section" css={{ marginTop: "32px" }}>
       <FilterSection
         title="기준 식별자"
         filterButtonList={FILTER_LIST}
+        onClick={() => {}}
       ></FilterSection>
       <Box sx={{ mt: 5 }}>
         <RowGrid>
@@ -38,10 +38,10 @@ function TotalStatus() {
       <Box sx={{ mt: 6 }}>
         <RowGrid>
           <ColGrid width="66.66%">
-            <TagOccupancyCard tabList={TAB_OCCUPANCY_LIST}></TagOccupancyCard>
+            <TagOccupancyCard></TagOccupancyCard>
           </ColGrid>
           <ColGrid width="33.33%">
-            <TagTopCard tabList={TAB_TOP_LIST}></TagTopCard>
+            <TagTopCard></TagTopCard>
           </ColGrid>
         </RowGrid>
       </Box>

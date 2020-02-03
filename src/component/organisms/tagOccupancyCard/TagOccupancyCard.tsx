@@ -5,18 +5,16 @@ import WidgetCard from "component/atoms/widgetCard/WidgetCard";
 import WidgetHeader from "component/atoms/widgetHeader/WidgetHeader";
 import TabGroup from "component/molecules/tabGroup/TabGroup";
 
-import { ITabItem } from "types";
+import { TAB_OCCUPANCY_LIST } from "../../../constants";
 
-type TagOccupancyCardProps = {
-  tabList: ITabItem[];
-};
+type TagOccupancyCardProps = {};
 
-function TagOccupancyCard({ tabList }: TagOccupancyCardProps) {
-  const { tabListState, onHandleTabClick } = useTab(tabList);
+function TagOccupancyCard() {
+  const { tabList, onHandleTabClick } = useTab(TAB_OCCUPANCY_LIST);
   return (
     <WidgetCard>
       <WidgetHeader title="UFO 태그별 점유도"></WidgetHeader>
-      <TabGroup tabList={tabListState} onClick={onHandleTabClick}></TabGroup>
+      <TabGroup tabList={tabList} onClick={onHandleTabClick}></TabGroup>
       graphData
     </WidgetCard>
   );

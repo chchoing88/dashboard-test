@@ -23,10 +23,10 @@ const theme: Thmeme = {
   space: [0, 4, 8, 16, 24, 32, 48, 64, 128, 256],
   text: {
     heading: {
-      fontSize: [2, 2, 3]
+      fontSize: 3
     },
     secondaryHeading: {
-      fontSize: [3, 3, 5]
+      fontSize: 5
     }
   },
   shadows: {

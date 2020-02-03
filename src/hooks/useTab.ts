@@ -1,5 +1,6 @@
 import { useState, useCallback, useMemo } from "react";
 import { ITabItem, TabHooks, ITabId } from "types";
+import { setActiveByID } from "utils";
 // [
 //   {
 //     id: 'abc',
@@ -26,15 +27,7 @@ function useTab(tabDataList: ITabItem[]): TabHooks {
     // tabName 이 맞는게 있으면 그걸 true 바꾸고 나머지 false
     // 맞는게 없으면 그대로 두자.
     // 함수형 업데이트
-    setTabList(tabList => {
-      if (tabList.some(tabData => tabData.id === tabId)) {
-        return tabList.map(tabData => {
-          tabData.isActive = tabData.id === tabId;
-          return tabData;
-        });
-      }
-      return tabList;
-    });
+    setTabList(setActiveByID<ITabId[keyof ITabId], ITabItem>(tabId));
   }, []);
 
   // Computed 한 값
@@ -46,7 +39,7 @@ function useTab(tabDataList: ITabItem[]): TabHooks {
 
   return {
     currentTabData,
-    tabListState: tabList,
+    tabList,
     onHandleTabClick
   };
 }

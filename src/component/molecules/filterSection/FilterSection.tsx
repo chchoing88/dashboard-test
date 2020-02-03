@@ -11,9 +11,14 @@ import { IFilterButton } from "types";
 type FilterSectionProps = {
   title: string;
   filterButtonList: IFilterButton[];
+  onClick: () => void;
 };
 
-function FilterSection({ title, filterButtonList }: FilterSectionProps) {
+function FilterSection({
+  title,
+  filterButtonList,
+  onClick
+}: FilterSectionProps) {
   return (
     <Dl>
       <Dt
@@ -26,6 +31,7 @@ function FilterSection({ title, filterButtonList }: FilterSectionProps) {
       <Dd>
         <FilterButtonGroup
           filterButtonList={filterButtonList}
+          onClick={onClick}
         ></FilterButtonGroup>
       </Dd>
     </Dl>
