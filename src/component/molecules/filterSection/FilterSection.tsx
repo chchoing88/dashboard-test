@@ -6,12 +6,12 @@ import Dd from "component/atoms/dd/Dd";
 import FilterTitle from "component/atoms/filterTitle/FilterTitle";
 import FilterButtonGroup from "component/molecules/filterButtonGroup/FilterButtonGroup";
 
-import { IFilterButton } from "types";
+import { IFilterItem, FilterClickHandler } from "types";
 
 type FilterSectionProps = {
   title: string;
-  filterButtonList: IFilterButton[];
-  onClick: () => void;
+  filterButtonList: IFilterItem[];
+  onClick: FilterClickHandler;
 };
 
 function FilterSection({

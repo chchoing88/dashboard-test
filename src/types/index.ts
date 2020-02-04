@@ -1,3 +1,6 @@
+import * as Rx from "rxjs";
+import { AjaxResponse, AjaxError } from "rxjs/ajax";
+
 export interface IActiveBehavior<T> {
   isActive: boolean;
   id: T;
@@ -36,7 +39,7 @@ export interface IUfoCategoryName {
 export interface IDataCollectionId {
   ADID: "adid";
   AID: "aid";
-  ACCOUNTID: "account id";
+  ACCOUNTID: "accountId";
 }
 
 export interface IDataCollectionName {
@@ -45,12 +48,22 @@ export interface IDataCollectionName {
   ACCOUNTID: "account id";
 }
 
-export interface IFilterButton
+export interface IFilterItem
   extends IActiveBehavior<
     Readonly<IDataCollectionId>[keyof IDataCollectionId]
   > {
   name: Readonly<IDataCollectionName>[keyof IDataCollectionName];
 }
+
+export type FilterClickHandler = (
+  id: Readonly<IDataCollectionId>[keyof IDataCollectionId]
+) => void;
+
+export type FilterHooks = {
+  filterList: IFilterItem[];
+  onClickFilterHandler: FilterClickHandler;
+  currentFilterData$: Rx.Observable<IFilterItem>;
+};
 
 export interface ITabId extends IUfoCategoryId {}
 
@@ -66,3 +79,8 @@ export type TabHooks = {
   tabList: ITabItem[];
   onHandleTabClick: TabClickHandler;
 };
+
+export interface IAPIResponse {
+  success: AjaxResponse | null;
+  error: AjaxError | null;
+}

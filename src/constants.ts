@@ -1,4 +1,4 @@
-import { INaviItem, ITabItem, IFilterButton } from "types";
+import { INaviItem, ITabItem, IFilterItem } from "types";
 export const NAVI_INIT_STATE: INaviItem[] = [
   {
     id: "home",
@@ -20,10 +20,10 @@ export const NAVI_INIT_STATE: INaviItem[] = [
   }
 ];
 
-export const FILTER_LIST: IFilterButton[] = [
+export const FILTER_LIST: IFilterItem[] = [
   { id: "adid", name: "adid", isActive: true },
   { id: "aid", name: "aid", isActive: false },
-  { id: "account id", name: "account id", isActive: false }
+  { id: "accountId", name: "account id", isActive: false }
 ];
 
 export const TAB_OCCUPANCY_LIST: ITabItem[] = [

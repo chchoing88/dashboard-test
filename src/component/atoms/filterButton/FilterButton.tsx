@@ -3,11 +3,11 @@ import { Button, ButtonProps } from "rebass";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
-import { IFilterButton } from "types";
+import { IFilterItem } from "types";
 import { filterButtonStyle } from "./FilterButton.styled";
 
 interface FilterButtonProps extends ButtonProps {
-  buttonItem: IFilterButton;
+  buttonItem: IFilterItem;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 

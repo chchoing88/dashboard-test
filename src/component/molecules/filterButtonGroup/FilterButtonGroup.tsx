@@ -1,10 +1,10 @@
 import React from "react";
 import FilterButton from "component/atoms/filterButton/FilterButton";
-import { IFilterButton } from "types";
+import { IFilterItem, FilterClickHandler } from "types";
 
 type FilterButtonGroupProps = {
-  filterButtonList: IFilterButton[];
-  onClick: () => void;
+  filterButtonList: IFilterItem[];
+  onClick: FilterClickHandler;
 };
 
 function FilterButtonGroup({
@@ -17,7 +17,7 @@ function FilterButtonGroup({
         <FilterButton
           key={buttonItem.id}
           buttonItem={buttonItem}
-          onClick={onClick}
+          onClick={e => onClick(buttonItem.id)}
         />
       ))}
     </>

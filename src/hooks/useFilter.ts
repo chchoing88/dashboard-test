@@ -1,11 +1,35 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
+import { of } from "rxjs";
+import { setActiveByID } from "utils";
 
-function useFilter(filterData) {
-  const [filterList, setFilterList] = useState(filterData);
+import { IFilterItem, FilterHooks, IDataCollectionId } from "types";
 
-  const onClickFilterHandler = useCallback(() => {
-    // filterList isActive 변경
-  }, []);
+function useFilter(filterData: IFilterItem[]): FilterHooks {
+  const [filterList, setFilterList] = useState<IFilterItem[]>(filterData);
+
+  const onClickFilterHandler = useCallback(
+    (filterId: IDataCollectionId[keyof IDataCollectionId]): void => {
+      // filterList isActive 변경
+      setFilterList(
+        setActiveByID<IDataCollectionId[keyof IDataCollectionId], IFilterItem>(
+          filterId
+        )
+      );
+    },
+    []
+  );
+
+  // 현재 탭 객체
+  const currentFilterData$ = useMemo(() => {
+    const activeIndex = filterList.findIndex(filterData => filterData.isActive);
+    return of(filterList[activeIndex]);
+  }, [filterList]);
+
+  return {
+    filterList,
+    onClickFilterHandler,
+    currentFilterData$
+  };
 }
 
 export default useFilter;
