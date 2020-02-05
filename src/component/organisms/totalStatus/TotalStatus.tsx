@@ -28,7 +28,7 @@ function TotalStatus() {
     overallApi.fetch
   );
 
-  console.log("overallState ", overallState);
+  console.log("overall State ", overallState);
 
   return (
     <Box variant="section" css={{ marginTop: "32px" }}>

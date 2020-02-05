@@ -1,4 +1,4 @@
-import { Observable, iif, of, Subscriber } from "rxjs";
+import { Observable, iif, of } from "rxjs";
 import { ajax, AjaxRequest, AjaxResponse, AjaxError } from "rxjs/ajax";
 import { mergeMap } from "rxjs/operators";
 
@@ -6,30 +6,24 @@ import { IActiveBehavior, IDataCollectionId, IAPIResponse } from "../types";
 import { catchError } from "rxjs/operators";
 
 // const DOMAIN = "https://ufo-api.devel.kakao.com/api/test";
-const DOMAIN = `https://api.github.com/users?per_page=2`;
+const DOMAIN = `https://randomuser.me/api/`;
 
 const successFn = (success: AjaxResponse): Observable<IAPIResponse> =>
   of({
     success,
-    error: null
+    error: null,
+    isLoading: true
   });
 
 const errorFn = (error: AjaxError): Observable<IAPIResponse> =>
   of({
     success: null,
-    error
+    error,
+    isLoading: true
   });
 
-const request = ({
-  url,
-  method = "GET"
-}: AjaxRequest): Observable<IAPIResponse> => {
-  const progressSubscriber = new Subscriber<ProgressEvent>(v =>
-    console.log("v", v)
-  );
-  console.log("progressSubscriber", progressSubscriber);
-
-  return ajax({ url, method, progressSubscriber }).pipe(
+const request = ({ url, method }: AjaxRequest): Observable<IAPIResponse> => {
+  return ajax({ url, method }).pipe(
     catchError(error => of(error)),
     mergeMap(result =>
       iif(
@@ -49,7 +43,8 @@ export const overallApi = {
   > {
     return request({
       // url: `${DOMAIN}/overall?idtype=${id}`
-      url: DOMAIN
+      url: DOMAIN,
+      method: "GET"
     });
   }
 };

@@ -83,4 +83,5 @@ export type TabHooks = {
 export interface IAPIResponse {
   success: AjaxResponse | null;
   error: AjaxError | null;
+  isLoading: boolean;
 }

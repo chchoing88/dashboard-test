@@ -10,7 +10,8 @@ function useApiObservable<T>(
 ): IAPIResponse {
   const [state, setState] = useState<IAPIResponse>({
     success: null,
-    error: null
+    error: null,
+    isLoading: false
   });
 
   useEffect(() => {
