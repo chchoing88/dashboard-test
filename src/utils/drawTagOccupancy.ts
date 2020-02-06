@@ -10,6 +10,12 @@ type SunburstItem = {
   fullname: string;
 };
 
+interface IExtendSunburstLevelsOption {
+  level?: number;
+  colorByPoint?: boolean;
+  levelIsConstant?: boolean;
+}
+
 const DEMO_SUNBURST_LIST = [
   {
     id: "UFO",
@@ -26,6 +32,227 @@ const DEMO_SUNBURST_LIST = [
     partname: "여가/일상",
     fullname: "I01-여가/일상"
   },
+  {
+    parent: "UFO",
+    id: "I03",
+    value: 6.82,
+    tag_ratio: 0,
+    partname: "패션",
+    fullname: "I03-패션"
+  },
+
+  {
+    parent: "UFO",
+    id: "I02",
+    value: 6.01,
+    tag_ratio: 0,
+    partname: "건강",
+    fullname: "I02-건강"
+  },
+  {
+    parent: "UFO",
+    id: "I04",
+    value: 8.04,
+    tag_ratio: 0,
+    partname: "게임",
+    fullname: "I04-게임"
+  },
+
+  {
+    parent: "UFO",
+    id: "I05",
+    value: 3.59,
+    tag_ratio: 0,
+    partname: "교육",
+    fullname: "I05-교육"
+  },
+
+  {
+    parent: "UFO",
+    id: "I06",
+    value: 5.87,
+    tag_ratio: 0,
+    partname: "가정/생활",
+    fullname: "I06-가정/생활"
+  },
+
+  {
+    parent: "UFO",
+    id: "I07",
+    value: 5.52,
+    tag_ratio: 0,
+    partname: "금융",
+    fullname: "I07-금융"
+  },
+  {
+    parent: "UFO",
+    id: "I08",
+    value: 2.5,
+    tag_ratio: 0,
+    partname: "육아",
+    fullname: "I08-육아"
+  },
+
+  {
+    parent: "UFO",
+    id: "I09",
+    value: 5.24,
+    tag_ratio: 0,
+    partname: "뷰티",
+    fullname: "I09-뷰티"
+  },
+
+  {
+    parent: "UFO",
+    id: "I10",
+    value: 2.15,
+    tag_ratio: 0,
+    partname: "인물",
+    fullname: "I10-인물"
+  },
+
+  {
+    parent: "UFO",
+    id: "I11",
+    value: 3.25,
+    tag_ratio: 0,
+    partname: "도서/만화/애니",
+    fullname: "I11-도서/만화/애니"
+  },
+
+  {
+    parent: "UFO",
+    id: "I12",
+    value: 0.58,
+    tag_ratio: 0,
+    partname: "문화/예술",
+    fullname: "I12-문화/예술"
+  },
+
+  {
+    parent: "UFO",
+    id: "I13",
+    value: 1.09,
+    tag_ratio: 0,
+    partname: "공연",
+    fullname: "I13-공연"
+  },
+
+  {
+    parent: "UFO",
+    id: "I14",
+    value: 5.96,
+    tag_ratio: 0,
+    partname: "여행",
+    fullname: "I14-여행"
+  },
+
+  {
+    parent: "UFO",
+    id: "I15",
+    value: 0.82,
+    tag_ratio: 0,
+    partname: "종교",
+    fullname: "I15-종교"
+  },
+  {
+    parent: "UFO",
+    id: "I16",
+    value: 6.64,
+    tag_ratio: 0,
+    partname: "요리/맛집",
+    fullname: "I16-요리/맛집"
+  },
+
+  {
+    parent: "UFO",
+    id: "I17",
+    value: 3.44,
+    tag_ratio: 0,
+    partname: "지식/동향/이슈",
+    fullname: "I17-지식/동향/이슈"
+  },
+
+  {
+    parent: "UFO",
+    id: "I18",
+    value: 2.03,
+    tag_ratio: 0,
+    partname: "스포츠",
+    fullname: "I18-스포츠"
+  },
+
+  {
+    parent: "UFO",
+    id: "I19",
+    value: 1.83,
+    tag_ratio: 0,
+    partname: "취업",
+    fullname: "I19-취업"
+  },
+
+  {
+    parent: "UFO",
+    id: "I20",
+    value: 1.2,
+    tag_ratio: 0,
+    partname: "영화",
+    fullname: "I20-영화"
+  },
+
+  {
+    parent: "UFO",
+    id: "I21",
+    value: 0.69,
+    tag_ratio: 0,
+    partname: "애완/반려동물",
+    fullname: "I21-애완/반려동물"
+  },
+  {
+    parent: "UFO",
+    id: "I22",
+    value: 4.51,
+    tag_ratio: 0,
+    partname: "자동차",
+    fullname: "I22-자동차"
+  },
+
+  {
+    parent: "UFO",
+    id: "I23",
+    value: 4.31,
+    tag_ratio: 0,
+    partname: "취미/레저",
+    fullname: "I23-취미/레저"
+  },
+
+  {
+    parent: "UFO",
+    id: "I24",
+    value: 1.27,
+    tag_ratio: 0,
+    partname: "직업",
+    fullname: "I24-직업"
+  },
+
+  {
+    parent: "UFO",
+    id: "I25",
+    value: 2.72,
+    tag_ratio: 0,
+    partname: "라이프이벤트",
+    fullname: "I25-라이프이벤트"
+  },
+
+  {
+    parent: "UFO",
+    id: "I26",
+    value: 2.77,
+    tag_ratio: 0,
+    partname: "음악",
+    fullname: "I26-음악"
+  },
+
   {
     parent: "I01",
     id: "I0101",
@@ -154,14 +381,7 @@ const DEMO_SUNBURST_LIST = [
     partname: "영화보기",
     fullname: "I010501-여가/일상-문화생활-영화보기"
   },
-  {
-    parent: "UFO",
-    id: "I02",
-    value: 6.01,
-    tag_ratio: 0,
-    partname: "건강",
-    fullname: "I02-건강"
-  },
+
   {
     parent: "I02",
     id: "I0201",
@@ -234,14 +454,7 @@ const DEMO_SUNBURST_LIST = [
     partname: "의학정보",
     fullname: "I020204-건강-건강정보-의학정보"
   },
-  {
-    parent: "UFO",
-    id: "I03",
-    value: 6.82,
-    tag_ratio: 0,
-    partname: "패션",
-    fullname: "I03-패션"
-  },
+
   {
     parent: "I03",
     id: "I0301",
@@ -322,14 +535,7 @@ const DEMO_SUNBURST_LIST = [
     partname: "명품",
     fullname: "I030301-패션-브랜드-명품"
   },
-  {
-    parent: "UFO",
-    id: "I04",
-    value: 8.04,
-    tag_ratio: 0,
-    partname: "게임",
-    fullname: "I04-게임"
-  },
+
   {
     parent: "I04",
     id: "I0401",
@@ -514,14 +720,7 @@ const DEMO_SUNBURST_LIST = [
     partname: "게임기",
     fullname: "I040201-게임-게임정보-게임기"
   },
-  {
-    parent: "UFO",
-    id: "I05",
-    value: 3.59,
-    tag_ratio: 0,
-    partname: "교육",
-    fullname: "I05-교육"
-  },
+
   {
     parent: "I05",
     id: "I0501",
@@ -642,14 +841,7 @@ const DEMO_SUNBURST_LIST = [
     partname: "자격증",
     fullname: "I0505-교육-자격증"
   },
-  {
-    parent: "UFO",
-    id: "I06",
-    value: 5.87,
-    tag_ratio: 0,
-    partname: "가정/생활",
-    fullname: "I06-가정/생활"
-  },
+
   {
     parent: "I06",
     id: "I0602",
@@ -690,14 +882,7 @@ const DEMO_SUNBURST_LIST = [
     partname: "마일리지/리워드",
     fullname: "I0604-가정/생활-마일리지/리워드"
   },
-  {
-    parent: "UFO",
-    id: "I07",
-    value: 5.52,
-    tag_ratio: 0,
-    partname: "금융",
-    fullname: "I07-금융"
-  },
+
   {
     parent: "I07",
     id: "I0701",
@@ -738,14 +923,7 @@ const DEMO_SUNBURST_LIST = [
     partname: "대출",
     fullname: "I0703-금융-대출"
   },
-  {
-    parent: "UFO",
-    id: "I08",
-    value: 2.5,
-    tag_ratio: 0,
-    partname: "육아",
-    fullname: "I08-육아"
-  },
+
   {
     parent: "I08",
     id: "I0801",
@@ -786,14 +964,7 @@ const DEMO_SUNBURST_LIST = [
     partname: "육아준비",
     fullname: "I0803-육아-육아준비"
   },
-  {
-    parent: "UFO",
-    id: "I09",
-    value: 5.24,
-    tag_ratio: 0,
-    partname: "뷰티",
-    fullname: "I09-뷰티"
-  },
+
   {
     parent: "I09",
     id: "I0901",
@@ -842,14 +1013,7 @@ const DEMO_SUNBURST_LIST = [
     partname: "외모관리",
     fullname: "I0905-뷰티-외모관리"
   },
-  {
-    parent: "UFO",
-    id: "I10",
-    value: 2.15,
-    tag_ratio: 0,
-    partname: "인물",
-    fullname: "I10-인물"
-  },
+
   {
     parent: "I10",
     id: "I1001",
@@ -898,14 +1062,7 @@ const DEMO_SUNBURST_LIST = [
     partname: "게이머",
     fullname: "I1004-인물-게이머"
   },
-  {
-    parent: "UFO",
-    id: "I11",
-    value: 3.25,
-    tag_ratio: 0,
-    partname: "도서/만화/애니",
-    fullname: "I11-도서/만화/애니"
-  },
+
   {
     parent: "I11",
     id: "I1101",
@@ -946,14 +1103,7 @@ const DEMO_SUNBURST_LIST = [
     partname: "웹툰/웹소설",
     fullname: "I1103-도서/만화/애니-웹툰/웹소설"
   },
-  {
-    parent: "UFO",
-    id: "I12",
-    value: 0.58,
-    tag_ratio: 0,
-    partname: "문화/예술",
-    fullname: "I12-문화/예술"
-  },
+
   {
     parent: "I12",
     id: "I1201",
@@ -962,14 +1112,7 @@ const DEMO_SUNBURST_LIST = [
     partname: "미술/디자인",
     fullname: "I1201-문화/예술-미술/디자인"
   },
-  {
-    parent: "UFO",
-    id: "I13",
-    value: 1.09,
-    tag_ratio: 0,
-    partname: "공연",
-    fullname: "I13-공연"
-  },
+
   {
     parent: "I13",
     id: "I1301",
@@ -1010,14 +1153,7 @@ const DEMO_SUNBURST_LIST = [
     partname: "전시",
     fullname: "I1305-공연-전시"
   },
-  {
-    parent: "UFO",
-    id: "I14",
-    value: 5.96,
-    tag_ratio: 0,
-    partname: "여행",
-    fullname: "I14-여행"
-  },
+
   {
     parent: "I14",
     id: "I1401",
@@ -1130,22 +1266,7 @@ const DEMO_SUNBURST_LIST = [
     partname: "패키지여행",
     fullname: "I1404-여행-패키지여행"
   },
-  {
-    parent: "UFO",
-    id: "I15",
-    value: 0.82,
-    tag_ratio: 0,
-    partname: "종교",
-    fullname: "I15-종교"
-  },
-  {
-    parent: "UFO",
-    id: "I16",
-    value: 6.64,
-    tag_ratio: 0,
-    partname: "요리/맛집",
-    fullname: "I16-요리/맛집"
-  },
+
   {
     parent: "I16",
     id: "I1601",
@@ -1250,14 +1371,7 @@ const DEMO_SUNBURST_LIST = [
     partname: "뷔페",
     fullname: "I160211-요리/맛집-맛집-뷔페"
   },
-  {
-    parent: "UFO",
-    id: "I17",
-    value: 3.44,
-    tag_ratio: 0,
-    partname: "지식/동향/이슈",
-    fullname: "I17-지식/동향/이슈"
-  },
+
   {
     parent: "I17",
     id: "I1701",
@@ -1306,14 +1420,7 @@ const DEMO_SUNBURST_LIST = [
     partname: "연예",
     fullname: "I1706-지식/동향/이슈-연예"
   },
-  {
-    parent: "UFO",
-    id: "I18",
-    value: 2.03,
-    tag_ratio: 0,
-    partname: "스포츠",
-    fullname: "I18-스포츠"
-  },
+
   {
     parent: "I18",
     id: "I1801",
@@ -1354,14 +1461,7 @@ const DEMO_SUNBURST_LIST = [
     partname: "배구",
     fullname: "I1805-스포츠-배구"
   },
-  {
-    parent: "UFO",
-    id: "I19",
-    value: 1.83,
-    tag_ratio: 0,
-    partname: "취업",
-    fullname: "I19-취업"
-  },
+
   {
     parent: "I19",
     id: "I1901",
@@ -1378,14 +1478,7 @@ const DEMO_SUNBURST_LIST = [
     partname: "공시/고시정보",
     fullname: "I1902-취업-공시/고시정보"
   },
-  {
-    parent: "UFO",
-    id: "I20",
-    value: 1.2,
-    tag_ratio: 0,
-    partname: "영화",
-    fullname: "I20-영화"
-  },
+
   {
     parent: "I20",
     id: "I2001",
@@ -1434,22 +1527,7 @@ const DEMO_SUNBURST_LIST = [
     partname: "애니메이션",
     fullname: "I2006-영화-애니메이션"
   },
-  {
-    parent: "UFO",
-    id: "I21",
-    value: 0.69,
-    tag_ratio: 0,
-    partname: "애완/반려동물",
-    fullname: "I21-애완/반려동물"
-  },
-  {
-    parent: "UFO",
-    id: "I22",
-    value: 4.51,
-    tag_ratio: 0,
-    partname: "자동차",
-    fullname: "I22-자동차"
-  },
+
   {
     parent: "I22",
     id: "I2201",
@@ -1498,14 +1576,7 @@ const DEMO_SUNBURST_LIST = [
     partname: "튜닝",
     fullname: "I220501-자동차-자동차관리-튜닝"
   },
-  {
-    parent: "UFO",
-    id: "I23",
-    value: 4.31,
-    tag_ratio: 0,
-    partname: "취미/레저",
-    fullname: "I23-취미/레저"
-  },
+
   {
     parent: "I23",
     id: "I2301",
@@ -1570,14 +1641,7 @@ const DEMO_SUNBURST_LIST = [
     partname: "봉사/기부",
     fullname: "I2308-취미/레저-봉사/기부"
   },
-  {
-    parent: "UFO",
-    id: "I24",
-    value: 1.27,
-    tag_ratio: 0,
-    partname: "직업",
-    fullname: "I24-직업"
-  },
+
   {
     parent: "I24",
     id: "I2401",
@@ -1602,14 +1666,7 @@ const DEMO_SUNBURST_LIST = [
     partname: "직장생활",
     fullname: "I240102-직업-업종/직종-직장생활"
   },
-  {
-    parent: "UFO",
-    id: "I25",
-    value: 2.72,
-    tag_ratio: 0,
-    partname: "라이프이벤트",
-    fullname: "I25-라이프이벤트"
-  },
+
   {
     parent: "I25",
     id: "I2501",
@@ -1642,14 +1699,7 @@ const DEMO_SUNBURST_LIST = [
     partname: "군대",
     fullname: "I2505-라이프이벤트-군대"
   },
-  {
-    parent: "UFO",
-    id: "I26",
-    value: 2.77,
-    tag_ratio: 0,
-    partname: "음악",
-    fullname: "I26-음악"
-  },
+
   {
     parent: "I26",
     id: "I2601",
@@ -1821,8 +1871,8 @@ function makeSunburstSeries(
     type: "sunburst",
     data: sunburstDataList,
     allowTraversingTree: true,
-    levelIsConstant: false,
-    colorByPoint: true,
+    // levelIsConstant: false,
+    // colorByPoint: true,
     cursor: "pointer",
     dataLabels: {
       format: "{point.partname}",
@@ -1831,58 +1881,6 @@ function makeSunburstSeries(
         operator: ">",
         value: 16
       }
-    },
-    levels: [
-      {
-        levelSize: {
-          value: 1
-        },
-        // levelIsConstant: false,
-        dataLabels: {
-          filter: {
-            property: "outerArcLength",
-            operator: ">",
-            value: 64
-          }
-        }
-      },
-      {
-        levelSize: {
-          value: 2
-        }
-        // colorByPoint: true
-      },
-      {
-        levelSize: {
-          value: 3
-        },
-        colorVariation: {
-          key: "brightness",
-          to: 0.5
-        }
-      },
-      {
-        levelSize: {
-          value: 4
-        },
-        colorVariation: {
-          key: "brightness",
-          to: 0.5
-        }
-      }
-    ]
-  };
-}
-
-function makeSunburstChartOption(
-  sunburstDataList: SunburstItem[]
-): Highcharts.Options {
-  return {
-    chart: {
-      height: "100%"
-    },
-    title: {
-      text: ""
     },
     colors: [
       "#7095CC",
@@ -1906,6 +1904,50 @@ function makeSunburstChartOption(
       "#B470CC",
       "#BA70CC"
     ],
+    levels: [
+      {
+        level: 1,
+        dataLabels: {
+          filter: {
+            property: "outerArcLength",
+            operator: ">",
+            value: 64
+          }
+        }
+      },
+      {
+        level: 2,
+        colorByPoint: true
+      },
+      {
+        level: 3,
+        colorVariation: {
+          key: "brightness",
+          to: 0.5
+        }
+      },
+      {
+        level: 4,
+        colorVariation: {
+          key: "brightness",
+          to: 0.5
+        }
+      }
+    ] as (Highcharts.PlotSunburstLevelsOptions & IExtendSunburstLevelsOption)[]
+  };
+}
+
+function makeSunburstChartOption(
+  sunburstDataList: SunburstItem[]
+): Highcharts.Options {
+  return {
+    chart: {
+      height: "100%"
+    },
+    title: {
+      text: ""
+    },
+    credits: { enabled: false },
     series: [makeSunburstSeries(sunburstDataList)],
     tooltip: {
       headerFormat: "",

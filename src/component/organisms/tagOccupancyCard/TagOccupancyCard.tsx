@@ -24,7 +24,13 @@ function TagOccupancyCard() {
     <WidgetCard>
       <WidgetHeader title="UFO 태그별 점유도"></WidgetHeader>
       <TabGroup tabList={tabList} onClick={onHandleTabClick}></TabGroup>
-      <Box ref={$elemChartWrapper}></Box>
+      <Box
+        sx={{
+          mt: 1,
+          minHeight: "789px"
+        }}
+        ref={$elemChartWrapper}
+      ></Box>
     </WidgetCard>
   );
 }

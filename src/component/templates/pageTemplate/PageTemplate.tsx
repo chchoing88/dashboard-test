@@ -9,6 +9,7 @@ function PageTemplate({ children }: PageTemplateProps) {
   return (
     <Box
       sx={{
+        pt: "55px",
         minWidth: "1280px"
       }}
     >

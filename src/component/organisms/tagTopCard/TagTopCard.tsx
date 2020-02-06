@@ -6,6 +6,7 @@ import WidgetHeader from "component/atoms/widgetHeader/WidgetHeader";
 import TabGroup from "component/molecules/tabGroup/TabGroup";
 
 import { TAB_TOP_LIST } from "../../../constants";
+import { Box } from "rebass";
 
 type tagTopCardProps = {};
 
@@ -16,7 +17,14 @@ function TagTopCard() {
     <WidgetCard>
       <WidgetHeader title="UFO Top20 태그"></WidgetHeader>
       <TabGroup tabList={tabList} onClick={onHandleTabClick}></TabGroup>
-      tagTopCard
+      <Box
+        sx={{
+          mt: 1,
+          minHeight: "789px"
+        }}
+      >
+        tagTopCard
+      </Box>
     </WidgetCard>
   );
 }

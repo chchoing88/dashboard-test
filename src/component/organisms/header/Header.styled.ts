@@ -1,8 +1,11 @@
 export const wrapHeaderStyle = {
+  position: "fixed",
+  width: "100%",
   minWidth: "1280px",
   height: "55px",
   borderBottom: "1px solid rgba(34, 36, 38, 0.15)",
-  bg: "#282c34"
+  bg: "#282c34",
+  zIndex: "100"
 };
 
 export const headerStyle = {
