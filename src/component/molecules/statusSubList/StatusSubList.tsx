@@ -4,13 +4,15 @@ import { Text } from "rebass";
 import RowGrid from "component/atoms/rowGrid/RowGrid";
 import ColGrid from "component/atoms/colGrid/ColGrid";
 import Boundary from "component/atoms/boundary/Boundary";
+import { comma } from "utils";
 
-type StatusSubListType = {
-  [key: string]: string;
+type StatusSubItem = {
+  title: string;
+  figure: string | number;
 };
 
 type StatusSubListProps = {
-  subList: StatusSubListType[];
+  subList: StatusSubItem[];
 };
 
 function StatusSubList({ subList }: StatusSubListProps) {
@@ -23,8 +25,8 @@ function StatusSubList({ subList }: StatusSubListProps) {
             padding: "15px 0 15px 24px"
           }}
         >
-          <Text sx={{ fontSize: 0 }}>관심사</Text>
-          <Text>29,301,944</Text>
+          <Text sx={{ fontSize: 0 }}>{subItem.title}</Text>
+          <Text>{subItem.figure}</Text>
           {index !== 0 && (
             <Boundary
               css={{

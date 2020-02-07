@@ -1,9 +1,8 @@
 import React from "react";
 import { Text, BoxProps } from "rebass";
-import { comma } from "utils";
 
 interface EmpFiguresProps extends BoxProps {
-  figure: number;
+  figure: string | number;
   children?: React.ReactElement;
 }
 
@@ -16,7 +15,7 @@ function EmpFigures({ figure, children, ...rest }: EmpFiguresProps) {
       }}
       {...rest}
     >
-      {comma(figure)} {children}
+      {figure} {children}
     </Text>
   );
 }

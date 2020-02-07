@@ -6,7 +6,8 @@ import { IActiveBehavior, IDataCollectionId, IAPIResponse } from "../types";
 import { catchError } from "rxjs/operators";
 
 // const DOMAIN = "https://ufo-api.devel.kakao.com/api/test";
-const DOMAIN = `https://randomuser.me/api/`;
+// const DOMAIN = `https://randomuser.me/api/`;
+const DOMAIN = `http://10.195.11.33:28888/api/test`;
 
 const successFn = (success: AjaxResponse): Observable<IAPIResponse> =>
   of({
@@ -42,8 +43,8 @@ export const overallApi = {
     IAPIResponse
   > {
     return request({
-      // url: `${DOMAIN}/overall?idtype=${id}`
-      url: DOMAIN,
+      url: `${DOMAIN}/overall?idtype=${id}`,
+      // url: DOMAIN,
       method: "GET"
     });
   }

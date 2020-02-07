@@ -66,3 +66,10 @@ export const TAB_TOP_LIST: ITabItem[] = [
     isActive: false
   }
 ];
+
+export const INIT_UFO_STATUS = {
+  overall: 0,
+  interest: 0,
+  poi: 0,
+  consume: 0
+};

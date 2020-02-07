@@ -80,8 +80,42 @@ export type TabHooks = {
   onHandleTabClick: TabClickHandler;
 };
 
+export type IAPISuccess = AjaxResponse | null;
+export type IAPIError = AjaxError | null;
 export interface IAPIResponse {
-  success: AjaxResponse | null;
-  error: AjaxError | null;
+  success: IAPISuccess;
+  error: IAPIError;
   isLoading: boolean;
+}
+
+export interface IUFOStatus {
+  overall: string | number;
+  interest: string | number;
+  poi: string | number;
+  consume: string | number;
+}
+
+export interface IUFOStatusGroup {
+  userCnt: IUFOStatus;
+  totalTags: IUFOStatus;
+  avgTagsByUser: IUFOStatus;
+}
+
+export interface IUFOTag {
+  tag: string;
+  userCnt: number;
+}
+
+interface IUFOTagTop {
+  overall: IUFOTag[];
+  interest: IUFOTag[];
+  poi: IUFOTag[];
+  consume: IUFOTag[];
+}
+
+export interface IOverallAPIResponse {
+  users: IUFOStatusGroup;
+  tags: {
+    tagTop20: IUFOTagTop;
+  };
 }

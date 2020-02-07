@@ -1,0 +1,24 @@
+
+### example
+POST https://localhost:4444/products HTTP/1.1
+content-type: application/json
+
+{
+    "name": "sample",
+    "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+}
+
+### 실서비스: 10.195.11.33:18888/api/test
+### dev: 10.195.11.33:28888/api/test
+
+### endpoint
+### ('/api/test/overall')
+### ('/ api/test/user_analysis')
+### ('/api/test/random_user')
+### ('/api/test/tag_occupancy')
+
+### 전체현황
+### 기준 데이터 식별자 idtype 쿼리 스트링
+### GET /overall?idtype = adid | aid | accountId
+get http://10.195.11.33:28888/api/test/overall?idtype=adid
+

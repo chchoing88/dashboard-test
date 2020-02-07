@@ -1,23 +1,50 @@
 import React from "react";
+
 import { Text } from "rebass";
 import WidgetCard from "component/atoms/widgetCard/WidgetCard";
 import WidgetHeader from "component/atoms/widgetHeader/WidgetHeader";
 import EmpFigures from "component/atoms/empFigures/EmpFigures";
 import StatusSubList from "component/molecules/statusSubList/StatusSubList";
 
+import { IAPIError, IUFOStatus } from "types";
+
 type StatusWidgetCardProps = {
+  status: IUFOStatus;
+  error: IAPIError;
   title: string;
-  figure: number;
   unit: string;
+  isLoading: boolean;
 };
 // {overall: 44011299, interest: 39301944, poi: 42842842, 소비: 3123392}
 
-function StatusWidgetCard() {
+function StatusWidgetCard({
+  status,
+  title,
+  unit,
+  error,
+  isLoading
+}: StatusWidgetCardProps) {
+  const subList = [
+    {
+      title: "관심사",
+      figure: status.interest
+    },
+    {
+      title: "사용 업종	",
+      figure: status.poi
+    },
+    {
+      title: "소비",
+      figure: status.consume
+    }
+  ];
   return (
     <WidgetCard>
-      <WidgetHeader title="UFO 태깅유저수"></WidgetHeader>
+      <WidgetHeader title={title}></WidgetHeader>
+      {/* loading */}
+      {/* error */}
       <EmpFigures
-        figure={44100100}
+        figure={status.overall}
         css={{
           paddingTop: "25px",
           paddingBottom: "25px",
@@ -31,11 +58,11 @@ function StatusWidgetCard() {
             color: "content"
           }}
         >
-          명
+          {unit}
         </Text>
       </EmpFigures>
 
-      <StatusSubList subList={[{}, {}, {}]}></StatusSubList>
+      <StatusSubList subList={subList}></StatusSubList>
     </WidgetCard>
   );
 }

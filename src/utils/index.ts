@@ -14,3 +14,20 @@ export const setActiveByID = <T, R extends IActiveBehavior<T>>(id: T) => (
   }
   return targetList;
 };
+
+interface LooseObject {
+  [key: string]: any;
+}
+
+export const convertCommaValueOfObject = <T extends LooseObject>(obj: T) => {
+  const test: LooseObject = {};
+  Object.keys(obj).reduce((result, key) => {
+    //result[key] = "ddd";
+
+    result[key] = obj[key];
+
+    return result;
+  }, test);
+
+  return test as T;
+};
