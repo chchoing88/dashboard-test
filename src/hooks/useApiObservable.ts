@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import * as Rx from "rxjs";
 
-import { switchMap } from "rxjs/operators";
+import { switchMap, tap } from "rxjs/operators";
 import { IAPIResponse } from "types";
 
 function useApiObservable<T>(
@@ -16,7 +16,16 @@ function useApiObservable<T>(
 
   useEffect(() => {
     const sub = $triggerObservable
-      .pipe(switchMap(value => apiObservable$(value)))
+      .pipe(
+        tap(_ =>
+          setState({
+            success: null,
+            error: null,
+            isLoading: true
+          })
+        ),
+        switchMap(value => apiObservable$(value))
+      )
       .subscribe(setState);
 
     return () => sub.unsubscribe();

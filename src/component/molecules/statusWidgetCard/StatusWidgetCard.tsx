@@ -1,21 +1,24 @@
 import React from "react";
 
-import { Text } from "rebass";
+import { Text, Box } from "rebass";
 import WidgetCard from "component/atoms/widgetCard/WidgetCard";
 import WidgetHeader from "component/atoms/widgetHeader/WidgetHeader";
 import EmpFigures from "component/atoms/empFigures/EmpFigures";
 import StatusSubList from "component/molecules/statusSubList/StatusSubList";
 
+import LoadBoundary from "component/atoms/loadBoundary/LoadBoundary";
+import ErrorBoundary from "component/atoms/errorBoundary/ErrorBoundary";
+import StatusError from "component/atoms/statusError/StatusError";
+
 import { IAPIError, IUFOStatus } from "types";
 
 type StatusWidgetCardProps = {
-  status: IUFOStatus;
+  status: IUFOStatus | null;
   error: IAPIError;
   title: string;
   unit: string;
   isLoading: boolean;
 };
-// {overall: 44011299, interest: 39301944, poi: 42842842, 소비: 3123392}
 
 function StatusWidgetCard({
   status,
@@ -27,42 +30,54 @@ function StatusWidgetCard({
   const subList = [
     {
       title: "관심사",
-      figure: status.interest
+      figure: status ? status.interest : 0
     },
     {
       title: "사용 업종	",
-      figure: status.poi
+      figure: status ? status.poi : 0
     },
     {
       title: "소비",
-      figure: status.consume
+      figure: status ? status.consume : 0
     }
   ];
+
   return (
     <WidgetCard>
       <WidgetHeader title={title}></WidgetHeader>
-      {/* loading */}
-      {/* error */}
-      <EmpFigures
-        figure={status.overall}
-        css={{
-          paddingTop: "25px",
-          paddingBottom: "25px",
-          textAlign: "center"
+      <Box
+        sx={{
+          minHeight: "192px"
         }}
       >
-        <Text
-          as="span"
-          sx={{
-            fontSize: 2,
-            color: "content"
-          }}
-        >
-          {unit}
-        </Text>
-      </EmpFigures>
-
-      <StatusSubList subList={subList}></StatusSubList>
+        <LoadBoundary css={{ paddingTop: "65px" }} isLoading={isLoading}>
+          <ErrorBoundary isError={!!error} errorComponent={<StatusError />}>
+            {status && (
+              <>
+                <EmpFigures
+                  figure={status.overall}
+                  css={{
+                    paddingTop: "25px",
+                    paddingBottom: "25px",
+                    textAlign: "center"
+                  }}
+                >
+                  <Text
+                    as="span"
+                    sx={{
+                      fontSize: 2,
+                      color: "content"
+                    }}
+                  >
+                    {unit}
+                  </Text>
+                </EmpFigures>
+                <StatusSubList subList={subList}></StatusSubList>
+              </>
+            )}
+          </ErrorBoundary>
+        </LoadBoundary>
+      </Box>
     </WidgetCard>
   );
 }

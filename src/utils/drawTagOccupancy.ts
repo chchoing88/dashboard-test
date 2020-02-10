@@ -2,13 +2,13 @@ import Highcharts from "highcharts";
 import sunburst from "highcharts/modules/sunburst";
 sunburst(Highcharts);
 
-type SunburstItem = {
+interface SunburstItem {
   id: string;
   value: number;
   tag_ratio: number;
   partname: string;
   fullname: string;
-};
+}
 
 interface IExtendSunburstLevelsOption {
   level?: number;

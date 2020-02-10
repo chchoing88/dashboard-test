@@ -36,28 +36,39 @@ export interface IUfoCategoryName {
   CONSUMPTION: "소비"; // Todo: 확인.
 }
 
+export interface IUfoCategoryEnName {
+  ALL: "overall";
+  I: "interest";
+  P: "poi";
+  C: "consume";
+}
+export type IUfoCategoryEnNameValue = Readonly<
+  IUfoCategoryEnName
+>[keyof IUfoCategoryEnName];
+
 export interface IDataCollectionId {
   ADID: "adid";
   AID: "aid";
   ACCOUNTID: "accountId";
 }
+export type IDataCollectionIdValue = Readonly<
+  IDataCollectionId
+>[keyof IDataCollectionId];
 
 export interface IDataCollectionName {
   ADID: "adid";
   AID: "aid";
   ACCOUNTID: "account id";
 }
+export type IDataCollectionNameValue = Readonly<
+  IDataCollectionName
+>[keyof IDataCollectionName];
 
-export interface IFilterItem
-  extends IActiveBehavior<
-    Readonly<IDataCollectionId>[keyof IDataCollectionId]
-  > {
-  name: Readonly<IDataCollectionName>[keyof IDataCollectionName];
+export interface IFilterItem extends IActiveBehavior<IDataCollectionIdValue> {
+  name: IDataCollectionNameValue;
 }
 
-export type FilterClickHandler = (
-  id: Readonly<IDataCollectionId>[keyof IDataCollectionId]
-) => void;
+export type FilterClickHandler = (id: IDataCollectionIdValue) => void;
 
 export type FilterHooks = {
   filterList: IFilterItem[];
@@ -66,14 +77,15 @@ export type FilterHooks = {
 };
 
 export interface ITabId extends IUfoCategoryId {}
+export type ITabIdValue = Readonly<ITabId>[keyof ITabId];
 
 export interface ITabName extends IUfoCategoryName {}
+export type ITabNameValue = Readonly<ITabName>[keyof ITabName];
 
-export interface ITabItem
-  extends IActiveBehavior<Readonly<ITabId>[keyof ITabId]> {
-  name: Readonly<ITabName>[keyof ITabName];
+export interface ITabItem extends IActiveBehavior<ITabIdValue> {
+  name: ITabNameValue;
 }
-export type TabClickHandler = (id: Readonly<ITabId>[keyof ITabId]) => void;
+export type TabClickHandler = (id: ITabIdValue) => void;
 export type TabHooks = {
   currentTabData: ITabItem;
   tabList: ITabItem[];
@@ -103,10 +115,10 @@ export interface IUFOStatusGroup {
 
 export interface IUFOTag {
   tag: string;
-  userCnt: number;
+  usercnt: number;
 }
 
-interface IUFOTagTop {
+export interface IUFOTagTop {
   overall: IUFOTag[];
   interest: IUFOTag[];
   poi: IUFOTag[];
@@ -118,4 +130,7 @@ export interface IOverallAPIResponse {
   tags: {
     tagTop20: IUFOTagTop;
   };
+}
+export interface LooseObject {
+  [key: string]: any;
 }

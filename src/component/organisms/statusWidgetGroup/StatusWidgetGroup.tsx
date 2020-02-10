@@ -1,12 +1,12 @@
-import React from "react";
-// import { convertCommaValueOfObject } from "utils";
+import React, { useMemo } from "react";
+import { convertCommaValueOfObject, convertToFixValueOfObject } from "utils";
 
 import { Box } from "rebass";
 import RowGrid from "component/atoms/rowGrid/RowGrid";
 import ColGrid from "component/atoms/colGrid/ColGrid";
 import StatusWidgetCard from "component/molecules/statusWidgetCard/StatusWidgetCard";
 
-import { INIT_UFO_STATUS } from "../../../constants";
+// import { INIT_UFO_STATUS } from "../../../constants";
 
 import { IUFOStatusGroup, IAPIError, IUFOStatus } from "types";
 
@@ -24,9 +24,19 @@ function StatusWidgetGroup({
   // observable 등록.
   // currentFilterData 변경되었을시..또 호출하는 방법은? observable 등록하는 방법은?
   // 데이터가 바뀐걸 감지하고 API를 호출하자.
-  const taggedUsersStatus = statusGroupData?.userCnt || INIT_UFO_STATUS;
-  const totalTagsStatus = statusGroupData?.totalTags || INIT_UFO_STATUS;
-  const avgTagsByUserStatus = statusGroupData?.avgTagsByUser || INIT_UFO_STATUS;
+  const taggedUsersStatus = useMemo(() => {
+    return convertCommaValueOfObject<IUFOStatus>(statusGroupData?.userCnt);
+  }, [statusGroupData]);
+
+  const totalTagsStatus = useMemo(() => {
+    return convertCommaValueOfObject<IUFOStatus>(statusGroupData?.totalTags);
+  }, [statusGroupData]);
+
+  const avgTagsByUserStatus = useMemo(() => {
+    return convertToFixValueOfObject<IUFOStatus>(
+      statusGroupData?.avgTagsByUser
+    );
+  }, [statusGroupData]);
 
   return (
     <Box sx={{ mt: 5 }}>

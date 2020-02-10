@@ -7,9 +7,9 @@ import { Box } from "rebass";
 import RowGrid from "component/atoms/rowGrid/RowGrid";
 import ColGrid from "component/atoms/colGrid/ColGrid";
 import FilterSection from "component/molecules/filterSection/FilterSection";
-import StatusWidgetGroup from "component/molecules/statusWidgetGroup/StatusWidgetGroup";
+import StatusWidgetGroup from "component/organisms/statusWidgetGroup/StatusWidgetGroup";
 import TagOccupancyCard from "component/organisms/tagOccupancyCard/TagOccupancyCard";
-import TagTopCard from "component/molecules/tagTopCard/TagTopCard";
+import TagTopCard from "component/organisms/tagTopCard/TagTopCard";
 
 import { FILTER_LIST } from "../../../constants";
 
@@ -30,6 +30,8 @@ function TotalStatus() {
   const responseStatus = success?.response as IOverallAPIResponse;
   const statusGroupData = responseStatus?.users;
 
+  const tagTopData = responseStatus?.tags?.tagTop20;
+
   return (
     <Box variant="section" css={{ marginTop: "32px" }}>
       <FilterSection
@@ -48,7 +50,7 @@ function TotalStatus() {
             <TagOccupancyCard></TagOccupancyCard>
           </ColGrid>
           <ColGrid width="33.33%">
-            <TagTopCard></TagTopCard>
+            <TagTopCard tagTopData={tagTopData}></TagTopCard>
           </ColGrid>
         </RowGrid>
       </Box>

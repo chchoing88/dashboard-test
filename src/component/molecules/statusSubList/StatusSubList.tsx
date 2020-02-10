@@ -4,7 +4,6 @@ import { Text } from "rebass";
 import RowGrid from "component/atoms/rowGrid/RowGrid";
 import ColGrid from "component/atoms/colGrid/ColGrid";
 import Boundary from "component/atoms/boundary/Boundary";
-import { comma } from "utils";
 
 type StatusSubItem = {
   title: string;
@@ -20,6 +19,7 @@ function StatusSubList({ subList }: StatusSubListProps) {
     <RowGrid css={{ margin: 0, borderTop: "1px solid rgba(0,0,0,.1)" }}>
       {subList.map((subItem, index) => (
         <ColGrid
+          key={subItem.title}
           css={{
             width: "33.33%",
             padding: "15px 0 15px 24px"

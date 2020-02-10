@@ -13,14 +13,14 @@ const successFn = (success: AjaxResponse): Observable<IAPIResponse> =>
   of({
     success,
     error: null,
-    isLoading: true
+    isLoading: false
   });
 
 const errorFn = (error: AjaxError): Observable<IAPIResponse> =>
   of({
     success: null,
     error,
-    isLoading: true
+    isLoading: false
   });
 
 const request = ({ url, method }: AjaxRequest): Observable<IAPIResponse> => {
