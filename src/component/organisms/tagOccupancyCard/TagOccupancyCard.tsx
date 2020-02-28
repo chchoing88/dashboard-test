@@ -16,8 +16,7 @@ import { TAB_OCCUPANCY_LIST } from "../../../constants";
 import {
   IFilterItem,
   IOccupancyApiFetchParameter,
-  IOccupancyItem,
-  IUfoCategoryIdValue
+  IOccupancyItem
 } from "types";
 import { Box } from "rebass";
 
@@ -29,18 +28,19 @@ function TagOccupancyCard({ currentFilterData }: TagOccupancyCardProps) {
   const { tabList, onHandleTabClick, currentTabData } = useTab(
     TAB_OCCUPANCY_LIST
   );
-  const { success, error, isLoading, subject$ } = useApiObservable<
+  const [occupancyState, subject$] = useApiObservable<
     IOccupancyApiFetchParameter
   >(occupancyApi.fetch);
 
   useEffect(() => {
     subject$.next({
       id: currentFilterData.id,
-      type: currentTabData.id as IUfoCategoryIdValue
+      type: currentTabData.id
     });
   }, [subject$, currentFilterData, currentTabData]);
 
-  const responseOccupancy = success?.response as IOccupancyItem[];
+  const responseOccupancy = occupancyState.success
+    ?.response as IOccupancyItem[];
 
   return (
     <WidgetCard>
@@ -51,8 +51,14 @@ function TagOccupancyCard({ currentFilterData }: TagOccupancyCardProps) {
           minHeight: "827px"
         }}
       >
-        <LoadBoundary isLoading={isLoading} css={{ paddingTop: "65px" }}>
-          <ErrorBoundary isError={!!error} errorComponent={<StatusError />}>
+        <LoadBoundary
+          isLoading={occupancyState.isLoading}
+          css={{ paddingTop: "65px" }}
+        >
+          <ErrorBoundary
+            isError={!!occupancyState.error}
+            errorComponent={<StatusError />}
+          >
             <TabGroup tabList={tabList} onClick={onHandleTabClick}></TabGroup>
             {responseOccupancy && (
               <TagOccupancySunburstChart

@@ -9,17 +9,17 @@ import LookupSection from "component/molecules/lookupSection/LookupSection";
 import { IRandomUserResponse } from "types";
 
 function Analysis() {
-  const { success, error, isLoading, subject$ } = useApiObservable(
-    randomUserApi.fetch
-  );
+  const [randomState, subject$] = useApiObservable(randomUserApi.fetch);
   const onClickHandler = useCallback(
-    e => {
+    (e: React.MouseEvent<HTMLButtonElement>) => {
       subject$.next(e);
     },
     [subject$]
   );
 
-  const responseStatus = success?.response as IRandomUserResponse | undefined;
+  const responseStatus = randomState.success?.response as
+    | IRandomUserResponse
+    | undefined;
 
   return (
     <AnalysisTemplate
@@ -28,8 +28,8 @@ function Analysis() {
       contents={
         <AnalysisContens
           analysisData={responseStatus}
-          error={error}
-          isLoading={isLoading}
+          error={randomState.error}
+          isLoading={randomState.isLoading}
         ></AnalysisContens>
       }
     ></AnalysisTemplate>

@@ -3,7 +3,18 @@ import { Box, Text } from "rebass";
 import PageHeading from "component/atoms/pageHeading/PageHeading";
 import PageDesc from "component/atoms/pageDesc/PageDesc";
 
-function TotalStatusInfo() {
+type ModifyTime =
+  | {
+      start_date: string;
+      end_date: string;
+    }
+  | undefined;
+
+type TotalStatusInfoProps = {
+  modifyTime: ModifyTime;
+};
+
+function TotalStatusInfo({ modifyTime }: TotalStatusInfoProps) {
   return (
     <Box
       sx={{
@@ -25,7 +36,8 @@ function TotalStatusInfo() {
           color: "content"
         }}
       >
-        (데이터 제공 기준일 : 2019-01-10 ~ 2019-02-10)
+        {modifyTime &&
+          `(데이터 제공 기준일 : ${modifyTime.start_date} ~ ${modifyTime.end_date})`}
       </Text>
     </Box>
   );

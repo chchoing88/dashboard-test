@@ -20,9 +20,9 @@ function CategoryTagContents() {
   const { tabList, onHandleTabClick, currentTabData } = useTab(
     CATEGORY_TAB_LIST
   );
-  const { success, error, isLoading, subject$ } = useApiObservable<
-    ITagTreeApiFetchParameter
-  >(categoryTagApi.fetch);
+  const [tagTreeState, subject$] = useApiObservable<ITagTreeApiFetchParameter>(
+    categoryTagApi.fetch
+  );
   useEffect(() => {
     subject$.next({
       type: currentTabData.id
@@ -30,7 +30,7 @@ function CategoryTagContents() {
   }, [currentTabData, subject$]);
 
   const tagChartData = {
-    tree: (success?.response as ITagTreeItem[]) || []
+    tree: (tagTreeState.success?.response as ITagTreeItem[]) || []
   };
 
   const tagChartHeight = tagChartData.tree.length * NODE_HEIGHT;
@@ -45,9 +45,12 @@ function CategoryTagContents() {
         onClick={onHandleTabClick}
       ></TabGroup>
       <Box variant="section" css={{ marginTop: "20px" }}>
-        <LoadBoundary isLoading={isLoading} css={{ padding: "100px 0" }}>
+        <LoadBoundary
+          isLoading={tagTreeState.isLoading}
+          css={{ padding: "100px 0" }}
+        >
           <ErrorBoundary
-            isError={!!error}
+            isError={!!tagTreeState.error}
             errorComponent={<StatusError></StatusError>}
             css={{ padding: "100px 0" }}
           >

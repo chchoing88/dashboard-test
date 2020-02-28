@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import useFilter from "hooks/useFilter";
 import useApiObservable from "hooks/useApiObservable";
-import { overallApi } from "api";
+import { overallApi, modificationTimeApi } from "api";
 
 import MainTemplate from "component/templates/MainTemplate";
 import TotalStatusInfo from "component/organisms/totalStatusInfo/TotalStatusInfo";
@@ -12,28 +12,42 @@ import TagTopCard from "component/organisms/tagTopCard/TagTopCard";
 
 import { FILTER_LIST } from "../../constants";
 
-import { IOverallAPIResponse, IOverallAPIFetchParameter } from "types";
+import {
+  IOverallAPIResponse,
+  IOverallAPIFetchParameter,
+  IModificationTimeResponse
+} from "types";
 
 function Home() {
   const { filterList, onClickFilterHandler, currentFilterData } = useFilter(
     FILTER_LIST
   );
-  const { success, error, isLoading, subject$ } = useApiObservable<
+  const [overallState, overallSubject$] = useApiObservable<
     IOverallAPIFetchParameter
   >(overallApi.fetch);
+
   useEffect(() => {
-    subject$.next({
+    overallSubject$.next({
       idType: currentFilterData.id
     });
-  }, [subject$, currentFilterData]);
+  }, [overallSubject$, currentFilterData]);
 
-  const responseStatus = success?.response as IOverallAPIResponse;
-  const statusGroupData = responseStatus?.users;
-  const tagTopData = responseStatus?.tags?.tagTop20;
+  const overallSuccess = overallState.success?.response as IOverallAPIResponse;
+  const statusGroupData = overallSuccess?.users;
+  const tagTopData = overallSuccess?.tags?.tagTop20;
+
+  const [timeState, timeSubject$] = useApiObservable<never>(
+    modificationTimeApi.fetch
+  );
+  useEffect(() => {
+    timeSubject$.next();
+  }, [timeSubject$]);
+
+  const timeSuccess = timeState.success?.response as IModificationTimeResponse;
 
   return (
     <MainTemplate
-      title={<TotalStatusInfo></TotalStatusInfo>}
+      title={<TotalStatusInfo modifyTime={timeSuccess}></TotalStatusInfo>}
       filter={
         <FilterSection
           title="기준 유저키"
@@ -44,8 +58,8 @@ function Home() {
       status={
         <StatusWidgetGroup
           statusGroupData={statusGroupData}
-          error={error}
-          isLoading={isLoading}
+          error={overallState.error}
+          isLoading={overallState.isLoading}
         ></StatusWidgetGroup>
       }
       occupancy={
@@ -56,8 +70,8 @@ function Home() {
       top={
         <TagTopCard
           tagTopData={tagTopData}
-          error={error}
-          isLoading={isLoading}
+          error={overallState.error}
+          isLoading={overallState.isLoading}
         ></TagTopCard>
       }
     ></MainTemplate>

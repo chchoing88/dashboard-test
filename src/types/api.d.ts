@@ -54,7 +54,7 @@ export interface IOverallAPI {
 
 export interface IOccupancyApiFetchParameter {
   id: IDataCollectionIdValue;
-  type: IUfoCategoryIdValue;
+  type: Exclude<IUfoCategoryIdValue, "ALL" | "L" | "A">;
 }
 
 export interface IOccupancyItem {
@@ -151,9 +151,20 @@ export interface ITagTreeItem {
 }
 
 export interface ITagTreeApiFetchParameter {
-  type: IUfoCategoryIdValue;
+  type: Exclude<IUfoCategoryIdValue, "ALL">;
 }
 
 export interface ITagTreeApi {
   fetch: (data: ITagTreeApiFetchParameter) => Observable<IAPIResponse>;
+}
+
+// modificationTimeApi
+
+export interface IModificationTimeResponse {
+  start_date: string;
+  end_date: string;
+}
+
+export interface IModificationTimeApi {
+  fetch: () => Observable<IAPIResponse>;
 }

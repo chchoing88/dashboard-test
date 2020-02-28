@@ -7,12 +7,10 @@ import {
   IOccupancyApi,
   IRandomUserApi,
   IAPIResponse,
-  ITagTreeApi
+  ITagTreeApi,
+  IModificationTimeApi
 } from "../types";
 import { catchError } from "rxjs/operators";
-
-// const DOMAIN = "https://ufo-api.devel.kakao.com/api/test";
-// const DOMAIN = `https://randomuser.me/api/`;
 
 const DOMAIN =
   process.env.REACT_APP_DEV === "development"
@@ -73,7 +71,7 @@ export const randomUserApi: IRandomUserApi = {
   fetch() {
     return request({
       url: `${DOMAIN}/random_user`,
-      method: "Get"
+      method: "GET"
     });
   }
 };
@@ -82,7 +80,16 @@ export const categoryTagApi: ITagTreeApi = {
   fetch({ type }) {
     return request({
       url: `${DOMAIN}/tag_tree?type=${type}`,
-      method: "Get"
+      method: "GET"
+    });
+  }
+};
+
+export const modificationTimeApi: IModificationTimeApi = {
+  fetch() {
+    return request({
+      url: `${DOMAIN}/modification_time`,
+      method: "GET"
     });
   }
 };

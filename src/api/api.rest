@@ -17,6 +17,7 @@ content-type: application/json
 ### ('/api/test/random_user')
 ### ('/api/test/tag_occupancy')
 ### ('/api/test/tag_tree')
+### ('/api/test/modification_time')
 
 ### 전체현황
 ### 기준 데이터 식별자 idtype 쿼리 스트링
@@ -39,3 +40,7 @@ get http://10.195.11.33:28888/api/test/random_user
 ### 카테고리태그
 ### GET /tag_tree?type=I | P | C...
 get http://10.195.11.33:28888/api/test/tag_tree?type=I
+
+### 데이터 제공일
+### GET 
+get http://10.195.11.33:28888/api/test/modification_time
