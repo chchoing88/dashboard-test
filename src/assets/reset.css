@@ -127,3 +127,11 @@ var {
 #root {
   height: 100%;
 }
+.wrap_navi .active {
+  color: #fff;
+}
+
+.ico_comm {
+  background-image: url(./images/ico_comm_x2.png);
+  background-size: 50px 30px;
+}

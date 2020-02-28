@@ -3,7 +3,7 @@ import { Text, BoxProps } from "rebass";
 
 interface EmpFiguresProps extends BoxProps {
   figure: string | number;
-  children?: React.ReactElement;
+  children: React.ReactNode;
 }
 
 function EmpFigures({ figure, children, ...rest }: EmpFiguresProps) {

@@ -1,5 +1,7 @@
 import React from "react";
-import { Box, Heading, Text } from "rebass";
+import { Box, Text } from "rebass";
+import PageHeading from "component/atoms/pageHeading/PageHeading";
+import PageDesc from "component/atoms/pageDesc/PageDesc";
 
 function TotalStatusInfo() {
   return (
@@ -10,24 +12,8 @@ function TotalStatusInfo() {
       }}
     >
       <Box>
-        <Heading
-          variant="secondaryHeading"
-          sx={{
-            display: "inline-block",
-            pr: "2"
-          }}
-        >
-          전체현황
-        </Heading>
-        <Text
-          as="span"
-          sx={{
-            color: "content"
-          }}
-        >
-          UFO 태그의 전체 현황을 확인하기 위한 공간입니다
-        </Text>
-        <Text as="p"></Text>
+        <PageHeading>전체현황</PageHeading>
+        <PageDesc>UFO 태그의 전체 현황을 확인하기 위한 공간입니다.</PageDesc>
       </Box>
 
       <Text

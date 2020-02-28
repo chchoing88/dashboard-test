@@ -1,0 +1,73 @@
+import * as React from "react";
+import { Box } from "rebass";
+import { getMean, getStdDeviation, gerneratingXPoint, normalY } from "utils";
+
+type ConsumeDistributionGraphProps = {
+  percent: number;
+};
+
+// N(평균, 표준편차^2)
+const SVG_HEIGHT = 80;
+const BAR_WIDTH = 10;
+const STEP = 20;
+const LAST_INDEX = STEP - 1;
+const STEP_INTERVAL = 2;
+const BAR_HEIGHT = 50;
+const BAR_MIN_HEIGHT = 5;
+const LOW_BOUND = 50;
+const UPPER_BOUND = 150;
+const MAX_LABEL_XPOSITION = 170;
+
+const mean = getMean(LOW_BOUND, UPPER_BOUND);
+const stdDev = getStdDeviation(LOW_BOUND, UPPER_BOUND);
+const seriesData = gerneratingXPoint(BAR_WIDTH, STEP).map(xPoint => ({
+  x: xPoint,
+  y: normalY(xPoint, mean, stdDev, BAR_HEIGHT, BAR_MIN_HEIGHT)
+}));
+
+function ConsumeDistributionGraph({ percent }: ConsumeDistributionGraphProps) {
+  const matchIndex = Math.round(LAST_INDEX - (percent * LAST_INDEX) / 100);
+  return (
+    <Box sx={{ textAlign: "center" }}>
+      <Box
+        as="svg"
+        width={`${STEP * BAR_WIDTH + STEP_INTERVAL * STEP - 1}px`}
+        height={`${SVG_HEIGHT}px`}
+      >
+        <g transform={`translate(0, -25)`}>
+          {seriesData.map((stepItem, index) => {
+            return (
+              <rect
+                key={stepItem.x}
+                x={index * (BAR_WIDTH + STEP_INTERVAL)}
+                y={SVG_HEIGHT - stepItem.y}
+                width={BAR_WIDTH}
+                height={stepItem.y}
+                fill={index === matchIndex ? "#497adc" : "#ececef"}
+              />
+            );
+          })}
+        </g>
+
+        {seriesData.map((stepItem, index) => {
+          return (
+            index === matchIndex && (
+              <g
+                key={stepItem.x}
+                transform={`translate(${
+                  index * (BAR_WIDTH + STEP_INTERVAL) > MAX_LABEL_XPOSITION
+                    ? MAX_LABEL_XPOSITION
+                    : index * (BAR_WIDTH + STEP_INTERVAL)
+                }, ${SVG_HEIGHT - 3})`}
+              >
+                <text x="0" y="0">{`상위 ${percent}%`}</text>
+              </g>
+            )
+          );
+        })}
+      </Box>
+    </Box>
+  );
+}
+
+export default ConsumeDistributionGraph;

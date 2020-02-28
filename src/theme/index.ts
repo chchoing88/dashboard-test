@@ -27,26 +27,28 @@ const theme: Thmeme = {
     },
     secondaryHeading: {
       fontSize: 5
+    },
+    sectionHeading: {
+      fontSize: 4
+    },
+    contentHeading: {
+      fontSize: 3
     }
   },
   shadows: {
-    card: "0 7px 30px -10px rgba(150,170,180,0.5);"
+    card: "0 7px 30px -10px rgba(150,170,180,0.5)",
+    button: "1px 2px 4px rgba(150,170,180,0.5)"
   },
   buttons: {
     identifier: {
       bg: "point"
-    },
-    tab: {
-      width: "100%",
-      color: "black",
-      fontSizes: 2,
-      outline: "none"
     }
   },
   variants: {
     widgetCard: {
       bg: "clean",
-      boxShadow: "card"
+      boxShadow: "card",
+      height: "100%"
     },
     section: {
       px: 4,

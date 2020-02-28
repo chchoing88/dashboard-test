@@ -1,18 +1,19 @@
 import React from "react";
 import { Box, BoxProps } from "rebass";
 
+import { THEME } from "./TabUl.styled";
+
 interface TabUlProps extends BoxProps {
-  children: React.ReactElement[];
+  children: React.ReactNode;
+  theme: "underLine" | "fill";
 }
 
-function TabUl({ children, ...rest }: TabUlProps) {
+function TabUl({ children, theme = "underLine", ...rest }: TabUlProps) {
   return (
     <Box
       as="ul"
       sx={{
-        borderBottomWidth: "1px",
-        borderBottomStyle: "solid",
-        borderBottomColor: "rgba(0,0,0,.1)",
+        ...THEME[theme].ul,
         "&:after": {
           display: "block",
           clear: "both",

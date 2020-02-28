@@ -3,40 +3,35 @@ import React from "react";
 import TabUl from "component/atoms/tabUl/TabUl";
 import TabLi from "component/atoms/tabLi/TabLi";
 import TabButton from "component/atoms/tabButton/TabButton";
-import Boundary from "component/atoms/boundary/Boundary";
 
-import { ITabItem, TabClickHandler } from "types";
+import { ITabItem } from "types";
 
 type TabGroupProps = {
-  tabList: ITabItem[];
-  onClick: TabClickHandler;
+  tabList: ITabItem<string>[];
+  theme?: "underLine" | "fill";
+  onClick: (key: any) => void;
 };
 
-function TabGroup({ tabList, onClick }: TabGroupProps) {
+function TabGroup({ tabList, theme = "underLine", onClick }: TabGroupProps) {
   const length = tabList.length || 0;
   return (
-    <TabUl>
+    <TabUl theme={theme}>
       {tabList.map((tabItem, index) => (
         <TabLi
           key={tabItem.id}
           isActive={tabItem.isActive}
+          theme={theme}
+          index={index}
           css={{
             width: `${100 / length}%`
           }}
         >
           <TabButton
             name={tabItem.name}
+            theme={theme}
             isActive={tabItem.isActive}
-            onClick={e => onClick(tabItem.id)}
+            onClick={_ => onClick(tabItem.id)}
           ></TabButton>
-          {index !== 0 && (
-            <Boundary
-              css={{
-                height: "15px",
-                top: "11px"
-              }}
-            />
-          )}
         </TabLi>
       ))}
     </TabUl>

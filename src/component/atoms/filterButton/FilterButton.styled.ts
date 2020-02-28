@@ -11,7 +11,7 @@ export const filterButtonStyle = (isActive: boolean) => ({
   fontSize: 1,
   color: isActive ? "#fff" : "point",
   bg: isActive ? "point" : "#fff",
-  boxShadow: isActive ? "2px 0 4px rgba(21, 70, 103, 0.5)" : "none",
+  boxShadow: isActive ? "button" : "none",
   outline: "none",
   svg: {
     mr: "4px"

@@ -1,10 +1,15 @@
 import React from "react";
 
-import { Text, Box } from "rebass";
+import { Box, Text } from "rebass";
 import WidgetCard from "component/atoms/widgetCard/WidgetCard";
 import WidgetHeader from "component/atoms/widgetHeader/WidgetHeader";
 import EmpFigures from "component/atoms/empFigures/EmpFigures";
-import StatusSubList from "component/molecules/statusSubList/StatusSubList";
+import UnitText from "component/atoms/unitText/UnitText";
+
+import SmallText from "component/atoms/smallText/SmallText";
+import RowGrid from "component/atoms/rowGrid/RowGrid";
+import ColGrid from "component/atoms/colGrid/ColGrid";
+import VerticalBoundaryBar from "component/atoms/verticalBoundaryBar/VerticalBoundaryBar";
 
 import LoadBoundary from "component/atoms/loadBoundary/LoadBoundary";
 import ErrorBoundary from "component/atoms/errorBoundary/ErrorBoundary";
@@ -27,21 +32,6 @@ function StatusWidgetCard({
   error,
   isLoading
 }: StatusWidgetCardProps) {
-  const subList = [
-    {
-      title: "관심사",
-      figure: status ? status.interest : 0
-    },
-    {
-      title: "사용 업종	",
-      figure: status ? status.poi : 0
-    },
-    {
-      title: "소비",
-      figure: status ? status.consume : 0
-    }
-  ];
-
   return (
     <WidgetCard>
       <WidgetHeader title={title}></WidgetHeader>
@@ -62,17 +52,54 @@ function StatusWidgetCard({
                     textAlign: "center"
                   }}
                 >
-                  <Text
-                    as="span"
-                    sx={{
-                      fontSize: 2,
-                      color: "content"
+                  <UnitText>{unit}</UnitText>
+                </EmpFigures>
+
+                <RowGrid
+                  css={{
+                    margin: 0,
+                    padding: "15px 0",
+                    borderTop: "1px solid rgba(0,0,0,.1)"
+                  }}
+                >
+                  <ColGrid
+                    col={3}
+                    css={{
+                      paddingLeft: "24px"
                     }}
                   >
-                    {unit}
-                  </Text>
-                </EmpFigures>
-                <StatusSubList subList={subList}></StatusSubList>
+                    <SmallText>관심사</SmallText>
+                    <Text>{status.interest}</Text>
+                  </ColGrid>
+                  <ColGrid
+                    col={3}
+                    css={{
+                      paddingLeft: "24px"
+                    }}
+                  >
+                    <SmallText>사용 업종</SmallText>
+                    <Text>{status.poi}</Text>
+                    <VerticalBoundaryBar
+                      css={{
+                        top: "10px"
+                      }}
+                    />
+                  </ColGrid>
+                  <ColGrid
+                    col={3}
+                    css={{
+                      paddingLeft: "24px"
+                    }}
+                  >
+                    <SmallText>소비</SmallText>
+                    <Text>{status.consume}</Text>
+                    <VerticalBoundaryBar
+                      css={{
+                        top: "10px"
+                      }}
+                    />
+                  </ColGrid>
+                </RowGrid>
               </>
             )}
           </ErrorBoundary>

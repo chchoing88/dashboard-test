@@ -1,13 +1,10 @@
 import React from "react";
+import { Box, BoxProps } from "rebass";
 
-interface ErrorBoundaryProps {
+interface ErrorBoundaryProps extends BoxProps {
   isError: boolean;
   errorComponent: React.ReactElement;
-  children:
-    | (React.ReactElement | string)[]
-    | React.ReactElement
-    | string
-    | null;
+  children: React.ReactNode;
 }
 
 function ErrorBoundary({
@@ -17,7 +14,7 @@ function ErrorBoundary({
   ...rest
 }: ErrorBoundaryProps) {
   if (isError) {
-    return errorComponent;
+    return <Box {...rest}>{errorComponent}</Box>;
   }
 
   return <>{children}</>;

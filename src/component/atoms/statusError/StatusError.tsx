@@ -5,7 +5,7 @@ function StatusError() {
   return (
     <Box
       sx={{
-        pt: "30px",
+        pt: "65px",
         textAlign: "center",
         color: "content"
       }}

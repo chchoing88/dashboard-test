@@ -9,6 +9,7 @@ import { filterButtonStyle } from "./FilterButton.styled";
 interface FilterButtonProps extends ButtonProps {
   buttonItem: IFilterItem;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
+  children?: never;
 }
 
 function FilterButton({ buttonItem, onClick, ...rest }: FilterButtonProps) {

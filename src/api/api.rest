@@ -13,12 +13,29 @@ content-type: application/json
 
 ### endpoint
 ### ('/api/test/overall')
-### ('/ api/test/user_analysis')
+### ('/api/test/user_analysis')
 ### ('/api/test/random_user')
 ### ('/api/test/tag_occupancy')
+### ('/api/test/tag_tree')
 
 ### 전체현황
 ### 기준 데이터 식별자 idtype 쿼리 스트링
 ### GET /overall?idtype = adid | aid | accountId
 get http://10.195.11.33:28888/api/test/overall?idtype=adid
 
+
+### 전체현황
+### 태그별 점유도
+### GET /tag_occupancy?type=I | P | C&idtype=adid | aid | accountId
+get http://10.195.11.33:28888/api/test/tag_occupancy?type=I&idtype=adid
+
+
+### 사용자분석
+### 랜덤 유저
+### GET /random_user
+get http://10.195.11.33:28888/api/test/random_user
+
+
+### 카테고리태그
+### GET /tag_tree?type=I | P | C...
+get http://10.195.11.33:28888/api/test/tag_tree?type=I

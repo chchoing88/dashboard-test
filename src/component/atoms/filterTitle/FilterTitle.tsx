@@ -3,6 +3,7 @@ import { Box, BoxProps } from "rebass";
 
 interface FilterTitleProps extends BoxProps {
   title: string;
+  children?: never;
 }
 
 function FilterTitle({ title, ...rest }: FilterTitleProps) {

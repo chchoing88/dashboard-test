@@ -1,12 +1,10 @@
 import React from "react";
-
-import Dl from "component/atoms/dl/Dl";
-import Dt from "component/atoms/dt/Dt";
-import Dd from "component/atoms/dd/Dd";
+import { Box } from "rebass";
 import FilterTitle from "component/atoms/filterTitle/FilterTitle";
 import FilterButtonGroup from "component/molecules/filterButtonGroup/FilterButtonGroup";
 
 import { IFilterItem, FilterClickHandler } from "types";
+import ClearBox from "component/atoms/clearBox/ClearBox";
 
 type FilterSectionProps = {
   title: string;
@@ -20,21 +18,23 @@ function FilterSection({
   onClick
 }: FilterSectionProps) {
   return (
-    <Dl>
-      <Dt
+    <ClearBox>
+      <Box
         css={{
-          marginTop: "5px"
+          marginTop: "10px",
+          float: "left",
+          width: "70px"
         }}
       >
         <FilterTitle title={title}></FilterTitle>
-      </Dt>
-      <Dd>
+      </Box>
+      <Box css={{ padding: "5px 0" }}>
         <FilterButtonGroup
           filterButtonList={filterButtonList}
           onClick={onClick}
         ></FilterButtonGroup>
-      </Dd>
-    </Dl>
+      </Box>
+    </ClearBox>
   );
 }
 

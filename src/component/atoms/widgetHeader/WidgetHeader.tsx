@@ -3,21 +3,20 @@ import { Text, BoxProps } from "rebass";
 
 interface WidgetHeaderProps extends BoxProps {
   title: string;
+  bgColor?: boolean;
+  children?: never;
 }
 
-function WidgetHeader({ title, ...rest }: WidgetHeaderProps) {
+function WidgetHeader({ title, bgColor, ...rest }: WidgetHeaderProps) {
   return (
     <Text
       as="strong"
       sx={{
         display: "block",
-        py: 2,
-        // borderBottomWidth: "1px",
-        // borderBottomStyle: "solid",
-        // borderBottomColor: "rgba(0,0,0,.1)",
-        bg: "base",
+        py: "10px",
+        bg: bgColor ? "base" : "none",
         textAlign: "center",
-        fontSize: 2
+        fontSize: "15px"
       }}
       {...rest}
     >
@@ -25,5 +24,9 @@ function WidgetHeader({ title, ...rest }: WidgetHeaderProps) {
     </Text>
   );
 }
+
+WidgetHeader.defaultProps = {
+  bgColor: true
+};
 
 export default WidgetHeader;

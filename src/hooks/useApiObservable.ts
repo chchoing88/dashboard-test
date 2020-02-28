@@ -1,37 +1,36 @@
-import { useState, useEffect } from "react";
-import * as Rx from "rxjs";
+import { useState, useEffect, useRef } from "react";
+import { Observable, Subject } from "rxjs";
 
-import { switchMap, tap } from "rxjs/operators";
+import { switchMap, tap, filter } from "rxjs/operators";
 import { IAPIResponse } from "types";
 
-function useApiObservable<T>(
-  $triggerObservable: Rx.Observable<T>,
-  apiObservable$: (value: T) => Rx.Observable<IAPIResponse>
-): IAPIResponse {
+function useApiObservable<T>(api$: (value: T) => Observable<IAPIResponse>) {
   const [state, setState] = useState<IAPIResponse>({
     success: null,
     error: null,
     isLoading: false
   });
 
+  const { current: subject$ } = useRef(new Subject<T>());
   useEffect(() => {
-    const sub = $triggerObservable
+    const sub = subject$
       .pipe(
+        filter(triggerData => triggerData !== null),
         tap(_ =>
-          setState({
-            success: null,
-            error: null,
+          setState(beforeState => ({
+            success: beforeState.success,
+            error: beforeState.error,
             isLoading: true
-          })
+          }))
         ),
-        switchMap(value => apiObservable$(value))
+        switchMap(value => api$(value))
       )
       .subscribe(setState);
 
     return () => sub.unsubscribe();
-  }, [$triggerObservable, apiObservable$]);
+  }, [subject$, api$]);
 
-  return state;
+  return { ...state, subject$ };
 }
 
 // 종료 시점, pipe,

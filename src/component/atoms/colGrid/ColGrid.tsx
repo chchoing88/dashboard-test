@@ -2,16 +2,17 @@ import React from "react";
 import { Box, BoxProps } from "rebass";
 
 interface ColGridProps extends BoxProps {
-  children: (React.ReactElement | boolean)[] | React.ReactElement;
+  children: React.ReactNode;
+  col: number;
 }
 
-function ColGrid({ children, ...rest }: ColGridProps) {
+function ColGrid({ children, col, ...rest }: ColGridProps) {
   return (
     <Box
       sx={{
         position: "relative",
         float: "left",
-        width: "8.33%",
+        width: `${100 / col}%`,
         px: 3
       }}
       {...rest}
@@ -20,5 +21,9 @@ function ColGrid({ children, ...rest }: ColGridProps) {
     </Box>
   );
 }
+
+ColGrid.defaultProps = {
+  col: 12
+};
 
 export default ColGrid;

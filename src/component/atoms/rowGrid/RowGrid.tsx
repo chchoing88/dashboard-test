@@ -2,7 +2,7 @@ import React from "react";
 import { Box, BoxProps } from "rebass";
 
 interface RowGridProps extends BoxProps {
-  children: React.ReactElement[] | React.ReactElement;
+  children: React.ReactNode;
 }
 
 function RowGrid({ children, ...rest }: RowGridProps) {

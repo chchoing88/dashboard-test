@@ -1,12 +1,9 @@
-import React, { useMemo } from "react";
+import React, { useMemo, memo } from "react";
 import { convertCommaValueOfObject, convertToFixValueOfObject } from "utils";
 
-import { Box } from "rebass";
 import RowGrid from "component/atoms/rowGrid/RowGrid";
 import ColGrid from "component/atoms/colGrid/ColGrid";
 import StatusWidgetCard from "component/molecules/statusWidgetCard/StatusWidgetCard";
-
-// import { INIT_UFO_STATUS } from "../../../constants";
 
 import { IUFOStatusGroup, IAPIError, IUFOStatus } from "types";
 
@@ -39,38 +36,36 @@ function StatusWidgetGroup({
   }, [statusGroupData]);
 
   return (
-    <Box sx={{ mt: 5 }}>
-      <RowGrid>
-        <ColGrid width="33.33%">
-          <StatusWidgetCard
-            title="태깅 유저수"
-            unit="명"
-            status={taggedUsersStatus}
-            isLoading={isLoading}
-            error={error}
-          ></StatusWidgetCard>
-        </ColGrid>
-        <ColGrid width="33.33%">
-          <StatusWidgetCard
-            title="태깅된 총 태그수"
-            unit="개"
-            status={totalTagsStatus}
-            isLoading={isLoading}
-            error={error}
-          ></StatusWidgetCard>
-        </ColGrid>
-        <ColGrid width="33.33%">
-          <StatusWidgetCard
-            title="태깅된 총 태그수"
-            unit="개"
-            status={avgTagsByUserStatus}
-            isLoading={isLoading}
-            error={error}
-          ></StatusWidgetCard>
-        </ColGrid>
-      </RowGrid>
-    </Box>
+    <RowGrid>
+      <ColGrid col={3}>
+        <StatusWidgetCard
+          title="태깅 유저수"
+          unit="명"
+          status={taggedUsersStatus}
+          isLoading={isLoading}
+          error={error}
+        ></StatusWidgetCard>
+      </ColGrid>
+      <ColGrid col={3}>
+        <StatusWidgetCard
+          title="태깅된 총 태그수"
+          unit="개"
+          status={totalTagsStatus}
+          isLoading={isLoading}
+          error={error}
+        ></StatusWidgetCard>
+      </ColGrid>
+      <ColGrid col={3}>
+        <StatusWidgetCard
+          title="인당 평균 태그수"
+          unit="개"
+          status={avgTagsByUserStatus}
+          isLoading={isLoading}
+          error={error}
+        ></StatusWidgetCard>
+      </ColGrid>
+    </RowGrid>
   );
 }
 
-export default StatusWidgetGroup;
+export default memo(StatusWidgetGroup);

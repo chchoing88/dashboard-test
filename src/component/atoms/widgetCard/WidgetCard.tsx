@@ -2,7 +2,7 @@ import React from "react";
 import { Box, BoxProps } from "rebass";
 
 interface WidgetCardProps extends BoxProps {
-  children: (React.ReactElement | string)[] | React.ReactElement;
+  children: React.ReactNode;
 }
 
 function WidgetCard({ children, ...rest }: WidgetCardProps) {

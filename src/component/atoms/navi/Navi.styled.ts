@@ -1,5 +1,5 @@
-export const styleNaviLink = (isActive: boolean) => ({
-  alignSelf: "stretch",
+export const styleNaviLink = {
+  // alignSelf: "stretch",
   bg: "#282c34",
   a: {
     display: "flex",
@@ -7,10 +7,10 @@ export const styleNaviLink = (isActive: boolean) => ({
     px: 3,
     alignItems: "center",
     fontSize: 2,
-    color: isActive ? "clean" : "#aaa",
+    color: "#aaa",
     boxSizing: "border-box"
   }
-});
+};
 
 // type StyleLinkProps = {
 //   isActive: boolean;

@@ -1,22 +1,19 @@
-import { INaviItem, ITabItem, IFilterItem } from "types";
+import { INaviItem, ITabItem, IFilterItem, IUfoCategoryIdValue } from "types";
 export const NAVI_INIT_STATE: INaviItem[] = [
   {
     id: "home",
     name: "전체 현황",
-    path: "/",
-    isActive: true
+    path: "/"
   },
   {
     id: "analysis",
     name: "사용자분석",
-    path: "/analysis",
-    isActive: false
+    path: "/analysis"
   },
   {
     id: "tag",
     name: "카테고리 태그",
-    path: "/tag",
-    isActive: false
+    path: "/tag"
   }
 ];
 
@@ -26,7 +23,9 @@ export const FILTER_LIST: IFilterItem[] = [
   { id: "accountId", name: "account id", isActive: false }
 ];
 
-export const TAB_OCCUPANCY_LIST: ITabItem[] = [
+export const TAB_OCCUPANCY_LIST: ITabItem<
+  Exclude<IUfoCategoryIdValue, "ALL" | "A" | "L">
+>[] = [
   {
     id: "I",
     name: "관심사",
@@ -44,7 +43,9 @@ export const TAB_OCCUPANCY_LIST: ITabItem[] = [
   }
 ];
 
-export const TAB_TOP_LIST: ITabItem[] = [
+export const TAB_TOP_LIST: ITabItem<
+  Exclude<IUfoCategoryIdValue, "A" | "L">
+>[] = [
   {
     id: "ALL",
     name: "전체",
@@ -67,9 +68,32 @@ export const TAB_TOP_LIST: ITabItem[] = [
   }
 ];
 
-export const INIT_UFO_STATUS = {
-  overall: 0,
-  interest: 0,
-  poi: 0,
-  consume: 0
-};
+export const CATEGORY_TAB_LIST: ITabItem<
+  Exclude<IUfoCategoryIdValue, "ALL">
+>[] = [
+  {
+    id: "I",
+    name: "관심사",
+    isActive: true
+  },
+  {
+    id: "P",
+    name: "업종",
+    isActive: false
+  },
+  {
+    id: "C",
+    name: "소비",
+    isActive: false
+  },
+  {
+    id: "A",
+    name: "활동정보(기획중)",
+    isActive: false
+  },
+  {
+    id: "L",
+    name: "라이프사이클(기획중)",
+    isActive: false
+  }
+];

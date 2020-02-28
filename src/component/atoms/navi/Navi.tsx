@@ -1,23 +1,23 @@
 import React from "react";
-import { INaviItem, NaviClickHandler } from "types";
+import { INaviItem } from "types";
 
-import { Link as RouterLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Box } from "rebass";
 import { styleNaviLink } from "./Navi.styled";
 
 type NaviProps = {
   naviItem: INaviItem;
-  onClick: NaviClickHandler;
+  children?: never;
 };
 
-function Navi({ naviItem, onClick }: NaviProps) {
-  const { id, name, path, isActive } = naviItem;
+function Navi({ naviItem }: NaviProps) {
+  const { name, path } = naviItem;
 
   return (
-    <Box sx={styleNaviLink(isActive)}>
-      <RouterLink to={path} onClick={() => onClick(id)}>
+    <Box as="li" sx={styleNaviLink}>
+      <NavLink exact to={path} activeClassName="active">
         {name}
-      </RouterLink>
+      </NavLink>
     </Box>
   );
 }

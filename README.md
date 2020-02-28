@@ -33,3 +33,10 @@ npm run build
 
 
 ## folder 구조
+
+
+## issue
+
+- typescript
+  - rebass 와 emotion/core 에서 css props 충돌
+  - highchart 의 타입이 완벽치 않다. 

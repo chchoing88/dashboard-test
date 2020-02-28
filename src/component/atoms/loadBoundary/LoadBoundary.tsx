@@ -1,34 +1,17 @@
-import React, { useState, useRef } from "react";
+import React from "react";
+import useLoading from "hooks/useLoading";
 import { Box, BoxProps } from "rebass";
 
 import Spinner from "component/atoms/spinner/Spinner";
 
 interface LoadBoundaryProps extends BoxProps {
   isLoading: boolean;
-  children:
-    | (React.ReactElement | string)[]
-    | React.ReactElement
-    | string
-    | null;
+  children: React.ReactNode;
 }
 
-const LOADING_THRESHOLD = 100;
-
 function LoadBoundary({ isLoading, children, ...rest }: LoadBoundaryProps) {
-  const [startLoading, setStartLoading] = useState(false);
-  const timeOutId = useRef<number | null>(null);
+  const startLoading = useLoading(isLoading);
 
-  if (isLoading) {
-    timeOutId.current = setTimeout(() => {
-      setStartLoading(true);
-    }, LOADING_THRESHOLD);
-  } else {
-    if (timeOutId.current) {
-      clearTimeout(timeOutId.current);
-      timeOutId.current = null;
-      startLoading && setStartLoading(false);
-    }
-  }
   if (startLoading) {
     return (
       <Box {...rest}>
