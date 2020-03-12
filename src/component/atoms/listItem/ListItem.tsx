@@ -2,9 +2,9 @@ import React from "react";
 
 import { Box, BoxProps } from "rebass";
 
-interface ListItemProps extends BoxProps {
+type ListItemProps = BoxProps & {
   children: React.ReactNode;
-}
+};
 
 function ListItem({ children, ...rest }: ListItemProps) {
   return (

@@ -1,17 +1,30 @@
 import React from "react";
-import { Button, ButtonProps } from "rebass";
+import { Button, ButtonProps, Text } from "rebass";
+import NewBadge from "component/atoms/newBadge/NewBadge";
 
+import { TabThemeType } from "types";
 import { THEME } from "./TabButton.styled";
 
-interface TabButtonProps extends ButtonProps {
+type TabButtonProps = ButtonProps & {
   name: string;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
   isActive: boolean;
-  theme: "underLine" | "fill";
+  theme: TabThemeType;
   children?: never;
-}
+} & typeof defaultProps;
 
-function TabButton({ name, onClick, theme, isActive }: TabButtonProps) {
+const defaultProps = {
+  isNew: false
+};
+
+function TabButton({
+  name,
+  onClick,
+  theme,
+  isActive,
+  isNew,
+  ...rest
+}: TabButtonProps) {
   return (
     <Button
       onClick={onClick}
@@ -21,10 +34,15 @@ function TabButton({ name, onClick, theme, isActive }: TabButtonProps) {
         textAlign: "center",
         ...THEME[theme].button(isActive)
       }}
+      {...rest}
     >
-      {name}
+      <Text sx={{ display: "inline-block", position: "relative" }}>
+        {name} {isNew && <NewBadge></NewBadge>}
+      </Text>
     </Button>
   );
 }
+
+TabButton.defaultProps = defaultProps;
 
 export default TabButton;

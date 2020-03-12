@@ -6,7 +6,7 @@ import { overallApi, modificationTimeApi } from "api";
 import MainTemplate from "component/templates/MainTemplate";
 import TotalStatusInfo from "component/organisms/totalStatusInfo/TotalStatusInfo";
 import FilterSection from "component/molecules/filterSection/FilterSection";
-import StatusWidgetGroup from "component/organisms/statusWidgetGroup/StatusWidgetGroup";
+import UfoStatusWidgetGroup from "component/organisms/ufoStatusWidgetGroup/UfoStatusWidgetGroup";
 import TagOccupancyCard from "component/organisms/tagOccupancyCard/TagOccupancyCard";
 import TagTopCard from "component/organisms/tagTopCard/TagTopCard";
 
@@ -32,7 +32,9 @@ function Home() {
     });
   }, [overallSubject$, currentFilterData]);
 
-  const overallSuccess = overallState.success?.response as IOverallAPIResponse;
+  const overallSuccess = overallState.success?.response as
+    | IOverallAPIResponse
+    | undefined;
   const statusGroupData = overallSuccess?.users;
   const tagTopData = overallSuccess?.tags?.tagTop20;
 
@@ -56,11 +58,11 @@ function Home() {
         ></FilterSection>
       }
       status={
-        <StatusWidgetGroup
+        <UfoStatusWidgetGroup
           statusGroupData={statusGroupData}
           error={overallState.error}
           isLoading={overallState.isLoading}
-        ></StatusWidgetGroup>
+        ></UfoStatusWidgetGroup>
       }
       occupancy={
         <TagOccupancyCard

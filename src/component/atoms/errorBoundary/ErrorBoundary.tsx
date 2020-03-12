@@ -1,11 +1,11 @@
 import React from "react";
 import { Box, BoxProps } from "rebass";
 
-interface ErrorBoundaryProps extends BoxProps {
+type ErrorBoundaryProps = BoxProps & {
   isError: boolean;
   errorComponent: React.ReactElement;
   children: React.ReactNode;
-}
+};
 
 function ErrorBoundary({
   isError,

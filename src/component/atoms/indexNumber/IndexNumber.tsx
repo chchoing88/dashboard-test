@@ -2,9 +2,9 @@ import React from "react";
 
 import { Text, TextProps } from "rebass";
 
-interface IndexNumberProps extends TextProps {
+type IndexNumberProps = TextProps & {
   children: React.ReactNode;
-}
+};
 
 function IndexNumber({ children, ...rest }: IndexNumberProps) {
   return (

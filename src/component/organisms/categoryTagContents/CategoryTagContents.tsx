@@ -58,6 +58,7 @@ function CategoryTagContents() {
               data={tagChartData}
               actions={false}
               height={resultChartHeight}
+              renderer={"svg"}
             ></TagTreeChart>
           </ErrorBoundary>
         </LoadBoundary>

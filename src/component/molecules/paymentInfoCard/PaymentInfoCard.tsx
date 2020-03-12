@@ -7,16 +7,22 @@ import { Box, Text } from "rebass";
 import PaymentInfo from "component/molecules/paymentInfo/PaymentInfo";
 
 import { ITotalPrice, ICounts } from "types";
+import RowGrid from "component/atoms/rowGrid/RowGrid";
+import ColGrid from "component/atoms/colGrid/ColGrid";
 
 type PaymentInfoCardProps = {
   totalPrice: ITotalPrice;
   counts: ICounts;
+} & typeof defaultProps;
+
+const defaultProps = {
+  isNew: false
 };
 
-function PaymentInfoCard({ totalPrice, counts }: PaymentInfoCardProps) {
+function PaymentInfoCard({ totalPrice, isNew, counts }: PaymentInfoCardProps) {
   return (
     <WidgetCard>
-      <WidgetHeader title="결제 금액 / 횟수 정보"></WidgetHeader>
+      <WidgetHeader title="결제 금액 / 횟수 정보" isNew={isNew}></WidgetHeader>
       <Box
         sx={{
           position: "relative",
@@ -24,23 +30,32 @@ function PaymentInfoCard({ totalPrice, counts }: PaymentInfoCardProps) {
           minHeight: "458px"
         }}
       >
-        <PaymentInfo
-          title="결제 총액"
-          value={`${comma(parseFloat(totalPrice.value))} 원`}
-          percent={totalPrice.percentile}
-        ></PaymentInfo>
-        <Box
-          sx={{
-            width: "100%",
-            height: "1px",
-            backgroundColor: "rgba(0,0,0,0.1)"
-          }}
-        ></Box>
-        <PaymentInfo
-          title="결제 건수"
-          value={`${counts.value} 회`}
-          percent={counts.percentile}
-        ></PaymentInfo>
+        <RowGrid>
+          <ColGrid col={6}>
+            <PaymentInfo
+              title="결제 총액"
+              value={`${comma(parseFloat(totalPrice.value))} 원`}
+              percent={totalPrice.percentile}
+            ></PaymentInfo>
+          </ColGrid>
+          <ColGrid col={6}>
+            <Box
+              sx={{
+                position: "absolute",
+                left: "0",
+                top: "30px",
+                bottom: "30px",
+                width: "1px",
+                backgroundColor: "rgba(0,0,0,0.1)"
+              }}
+            ></Box>
+            <PaymentInfo
+              title="결제 건수"
+              value={`${counts.value} 회`}
+              percent={counts.percentile}
+            ></PaymentInfo>
+          </ColGrid>
+        </RowGrid>
         <Box
           sx={{
             width: "100%",
@@ -63,5 +78,6 @@ function PaymentInfoCard({ totalPrice, counts }: PaymentInfoCardProps) {
     </WidgetCard>
   );
 }
+PaymentInfoCard.defaultProps = defaultProps;
 
 export default PaymentInfoCard;

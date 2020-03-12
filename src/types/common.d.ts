@@ -30,7 +30,7 @@ export type IUfoCategoryIdValue = Readonly<
 export interface IUfoCategoryName {
   ALL: "전체";
   INTEREST: "관심사";
-  BUSINESS: "업종";
+  BUSINESS: "서비스 업종";
   CONSUMPTION: "소비"; // Todo: 확인.
   LIFECYCLE: "라이프사이클";
   ACTIVEINFO: "활동정보";

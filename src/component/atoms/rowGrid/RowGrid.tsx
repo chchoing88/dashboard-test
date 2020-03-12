@@ -1,9 +1,9 @@
 import React from "react";
 import { Box, BoxProps } from "rebass";
 
-interface RowGridProps extends BoxProps {
+type RowGridProps = BoxProps & {
   children: React.ReactNode;
-}
+};
 
 function RowGrid({ children, ...rest }: RowGridProps) {
   return (

@@ -1,16 +1,20 @@
 import React from "react";
 import { Box, BoxProps } from "rebass";
 
-interface FlexColProps extends BoxProps {
+type FlexColProps = BoxProps & {
   children: React.ReactNode;
-  col: number;
-}
+} & typeof defaultProps;
+
+const defaultProps = {
+  col: 12
+};
+
 function FlexCol({ children, col, ...rest }: FlexColProps) {
   return (
     <Box
       sx={{
         position: "relative",
-        width: `${100 / col}%`,
+        width: `${(100 / 12) * col}%`,
         px: 3
       }}
       {...rest}
@@ -21,8 +25,6 @@ function FlexCol({ children, col, ...rest }: FlexColProps) {
   );
 }
 
-FlexCol.defaultProps = {
-  col: 12
-};
+FlexCol.defaultProps = defaultProps;
 
 export default FlexCol;

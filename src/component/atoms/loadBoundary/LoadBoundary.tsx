@@ -4,10 +4,10 @@ import { Box, BoxProps } from "rebass";
 
 import Spinner from "component/atoms/spinner/Spinner";
 
-interface LoadBoundaryProps extends BoxProps {
+type LoadBoundaryProps = BoxProps & {
   isLoading: boolean;
   children: React.ReactNode;
-}
+};
 
 function LoadBoundary({ isLoading, children, ...rest }: LoadBoundaryProps) {
   const startLoading = useLoading(isLoading);

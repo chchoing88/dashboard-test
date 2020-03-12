@@ -3,21 +3,21 @@ import drawTagTopBar from "utils/drawTagTopBar";
 
 import { Box } from "rebass";
 
-import { IUFOTagTop, ITabItem, IUfoCategoryIdValue } from "types";
+import { IUFOTag } from "types";
 
 type TagTopBarChartProps = {
-  tagTopData: IUFOTagTop;
-  currentTabData: ITabItem<Exclude<IUfoCategoryIdValue, "L" | "A">>;
+  tagTopList: IUFOTag[];
+  tagBarColor: string;
 };
 
-function TagTopBarChart({ tagTopData, currentTabData }: TagTopBarChartProps) {
+function TagTopBarChart({ tagTopList, tagBarColor }: TagTopBarChartProps) {
   const $elemChartWrapper = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if ($elemChartWrapper.current && tagTopData) {
-      drawTagTopBar($elemChartWrapper.current, tagTopData, currentTabData.id);
+    if ($elemChartWrapper.current && tagTopList && tagBarColor) {
+      drawTagTopBar($elemChartWrapper.current, tagTopList, tagBarColor);
     }
-  }, [currentTabData, tagTopData]);
+  }, [tagTopList, tagBarColor]);
 
   return (
     <Box

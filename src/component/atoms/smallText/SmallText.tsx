@@ -1,9 +1,9 @@
 import React from "react";
 import { Text, TextProps } from "rebass";
 
-interface SmallTextProps extends TextProps {
+type SmallTextProps = TextProps & {
   children: React.ReactNode;
-}
+};
 
 function SmallText({ children, ...rest }: SmallTextProps) {
   return (

@@ -15,14 +15,15 @@ type PaymentGroupProps = {
 function PaymentGroup({ paymentData }: PaymentGroupProps) {
   return (
     <RowGrid>
-      <ColGrid col={3}>
+      <ColGrid col={8}>
         <PaymentInfoCard
           totalPrice={paymentData.totalprice}
+          isNew={true}
           counts={paymentData.counts}
         ></PaymentInfoCard>
       </ColGrid>
-      <ColGrid col={3}>
-        <RankCard rankList={paymentData.services}></RankCard>
+      <ColGrid col={4}>
+        <RankCard rankList={paymentData.services} isNew={true}></RankCard>
       </ColGrid>
     </RowGrid>
   );

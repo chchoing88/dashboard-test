@@ -1,21 +1,30 @@
 import React from "react";
 import { Text, BoxProps } from "rebass";
 
-interface EmpFiguresProps extends BoxProps {
+type EmpFiguresProps = BoxProps & {
   figure: string | number;
   children: React.ReactNode;
-}
+};
 
 function EmpFigures({ figure, children, ...rest }: EmpFiguresProps) {
   return (
     <Text
       sx={{
-        fontSize: 7,
+        fontSize: "44px",
         color: "point"
       }}
       {...rest}
     >
-      {figure} {children}
+      <Text
+        sx={{
+          display: "inline-block",
+          paddingRight: "4px",
+          letterSpacing: "-1px"
+        }}
+      >
+        {figure}
+      </Text>
+      {children}
     </Text>
   );
 }

@@ -3,10 +3,13 @@ import React from "react";
 import { Link, LinkProps } from "rebass";
 import Icon from "component/atoms/icon/Icon";
 
-interface MenuLinkProps extends LinkProps {
+type MenuLinkProps = LinkProps & {
   children: React.ReactNode;
-  isOutLink?: boolean;
-}
+} & typeof defaultProps;
+
+const defaultProps = {
+  isOutLink: false
+};
 
 function MenuLink({ children, isOutLink, ...rest }: MenuLinkProps) {
   return (
@@ -32,8 +35,6 @@ function MenuLink({ children, isOutLink, ...rest }: MenuLinkProps) {
   );
 }
 
-MenuLink.defaultProps = {
-  isOutLink: false
-};
+MenuLink.defaultProps = defaultProps;
 
 export default MenuLink;

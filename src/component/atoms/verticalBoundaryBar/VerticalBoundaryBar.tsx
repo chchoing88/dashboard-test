@@ -1,9 +1,9 @@
 import React from "react";
 import { Box, BoxProps } from "rebass";
 
-interface VerticalBoundaryBarProps extends BoxProps {
+type VerticalBoundaryBarProps = BoxProps & {
   children?: never;
-}
+};
 
 function VerticalBoundaryBar({ ...rest }: VerticalBoundaryBarProps) {
   return (

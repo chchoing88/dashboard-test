@@ -15,32 +15,44 @@ export const setActiveByID = <T extends IActiveBehavior<R>, R>(id: R) => (
   return targetList;
 };
 
-export const convertCommaValueOfObject = <T extends LooseObject>(obj: T) => {
+export const convertCommaValueOfObject = <T extends LooseObject>(
+  obj: T | undefined
+) => {
   const result: LooseObject = {};
   if (!obj) {
     return null;
   }
   Object.keys(obj).reduce((acc, key) => {
     acc[key] = comma(obj[key]);
-
     return acc;
   }, result);
 
-  return result as T;
+  return result as { [key in keyof T]: string };
 };
 
-export const convertToFixValueOfObject = <T extends LooseObject>(obj: T) => {
+export const convertToFixValueOfObject = <T extends LooseObject>(
+  obj: T | undefined
+) => {
   const result: LooseObject = {};
   if (!obj) {
     return null;
   }
   Object.keys(obj).reduce((acc, key) => {
-    acc[key] = obj[key].toFixed(2);
+    const objValue = obj[key];
+    acc[key] = objValue === 0 ? objValue.toFixed(0) : objValue.toFixed(2);
 
     return acc;
   }, result);
 
-  return result as T;
+  return result as { [key in keyof T]: string };
+};
+
+export const zeroValueToDash = (value: string) => {
+  if (value === "0") {
+    return "-";
+  }
+
+  return value;
 };
 
 export const sortSunburstList = (

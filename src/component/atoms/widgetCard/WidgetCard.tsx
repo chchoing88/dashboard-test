@@ -1,9 +1,9 @@
 import React from "react";
 import { Box, BoxProps } from "rebass";
 
-interface WidgetCardProps extends BoxProps {
+type WidgetCardProps = BoxProps & {
   children: React.ReactNode;
-}
+};
 
 function WidgetCard({ children, ...rest }: WidgetCardProps) {
   return (

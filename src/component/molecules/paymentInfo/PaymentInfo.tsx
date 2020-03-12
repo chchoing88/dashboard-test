@@ -23,7 +23,7 @@ function PaymentInfo({ title, value, percent }: PaymentInfoProps) {
       >
         {title}
       </Text>
-      <Text sx={{ fontSize: 2 }}>{value} </Text>
+      <Text sx={{ fontSize: 3 }}>{value} </Text>
 
       <Box sx={{ mt: 2 }}>
         <ConsumeDistributionGraph percent={percent}></ConsumeDistributionGraph>

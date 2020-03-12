@@ -2,7 +2,7 @@ import React from "react";
 
 import { Heading, HeadingProps } from "rebass";
 
-interface ContentTitleProps extends HeadingProps {}
+type ContentTitleProps = HeadingProps & {};
 
 function ContentTitle({ children, ...rest }: ContentTitleProps) {
   return (

@@ -13,13 +13,13 @@ type InfoCardGroupProps = {
 function InfoCardGroup({ useInfoData }: InfoCardGroupProps) {
   return (
     <RowGrid css={{ textAlign: "center" }}>
-      <ColGrid col={3}>
+      <ColGrid col={4}>
         <InfoCard title="성별(추정)" infoText={useInfoData.gender} />
       </ColGrid>
-      <ColGrid col={3}>
+      <ColGrid col={4}>
         <InfoCard title="연령대(추정)" infoText={useInfoData.ageband} />
       </ColGrid>
-      <ColGrid col={3}>
+      <ColGrid col={4}>
         <InfoCard
           title="관심지역(추정)"
           infoText={useInfoData.regioninterest}

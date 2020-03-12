@@ -15,7 +15,7 @@ import { catchError } from "rxjs/operators";
 const DOMAIN =
   process.env.REACT_APP_DEV === "development"
     ? `http://10.195.11.33:28888/api/test`
-    : `http://10.195.11.33:18888/api/test`;
+    : `http://ufo-api.devel.kakao.com/api/test`;
 
 const successFn = (success: AjaxResponse): Observable<IAPIResponse> => {
   return of({

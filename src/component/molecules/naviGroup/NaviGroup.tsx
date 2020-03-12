@@ -15,8 +15,4 @@ function NaviGroup() {
   );
 }
 
-NaviGroup.defaultProps = {
-  naviList: []
-};
-
 export default NaviGroup;

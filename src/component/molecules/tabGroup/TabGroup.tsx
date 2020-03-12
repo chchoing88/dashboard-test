@@ -4,15 +4,18 @@ import TabUl from "component/atoms/tabUl/TabUl";
 import TabLi from "component/atoms/tabLi/TabLi";
 import TabButton from "component/atoms/tabButton/TabButton";
 
-import { ITabItem } from "types";
+import { ITabItem, TabThemeType } from "types";
 
 type TabGroupProps = {
-  tabList: ITabItem<string>[];
-  theme?: "underLine" | "fill";
   onClick: (key: any) => void;
+} & typeof defaultProps;
+
+const defaultProps = {
+  theme: "underLine" as TabThemeType,
+  tabList: [] as ITabItem<string>[]
 };
 
-function TabGroup({ tabList, theme = "underLine", onClick }: TabGroupProps) {
+function TabGroup({ tabList, theme, onClick }: TabGroupProps) {
   const length = tabList.length || 0;
   return (
     <TabUl theme={theme}>
@@ -30,7 +33,9 @@ function TabGroup({ tabList, theme = "underLine", onClick }: TabGroupProps) {
             name={tabItem.name}
             theme={theme}
             isActive={tabItem.isActive}
+            isNew={tabItem.isNew}
             onClick={_ => onClick(tabItem.id)}
+            css={{ letterSpacing: "-1px" }}
           ></TabButton>
         </TabLi>
       ))}
@@ -38,8 +43,6 @@ function TabGroup({ tabList, theme = "underLine", onClick }: TabGroupProps) {
   );
 }
 
-TabGroup.defaultProps = {
-  tabList: []
-};
+TabGroup.defaultProps = defaultProps;
 
 export default TabGroup;

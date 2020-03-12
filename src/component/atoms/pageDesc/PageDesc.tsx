@@ -1,9 +1,9 @@
 import React from "react";
 import { Text, TextProps } from "rebass";
 
-interface PageDescProps extends TextProps {
+type PageDescProps = TextProps & {
   children: React.ReactNode;
-}
+};
 
 function PageDesc({ children, ...rest }: PageDescProps) {
   return (

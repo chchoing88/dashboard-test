@@ -1,9 +1,9 @@
 import React from "react";
 import { Box, BoxProps } from "rebass";
 
-interface ClearBoxProps extends BoxProps {
+type ClearBoxProps = BoxProps & {
   children: React.ReactNode;
-}
+};
 
 function ClearBox({ children, ...rest }: ClearBoxProps) {
   return (

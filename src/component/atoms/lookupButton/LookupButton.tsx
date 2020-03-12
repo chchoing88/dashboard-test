@@ -2,9 +2,9 @@ import React from "react";
 
 import { Button, ButtonProps } from "rebass";
 
-interface LookupButtonProps extends ButtonProps {
+type LookupButtonProps = ButtonProps & {
   children: React.ReactNode;
-}
+};
 
 function LookupButton({ children, ...rest }: LookupButtonProps) {
   return <Button {...rest}></Button>;

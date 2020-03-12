@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import drawTagOccupancy from "utils/drawTagOccupancy";
-import { sortSunburstList } from "utils";
 
 import { Box } from "rebass";
 
@@ -17,10 +16,7 @@ function TagOccupancySunburstChart({
 
   useEffect(() => {
     if ($elemChartWrapper.current) {
-      drawTagOccupancy(
-        $elemChartWrapper.current,
-        sortSunburstList(occupancyDataList)
-      );
+      drawTagOccupancy($elemChartWrapper.current, occupancyDataList);
     }
   }, [occupancyDataList]);
 

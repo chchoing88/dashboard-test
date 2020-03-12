@@ -1,32 +1,36 @@
 import React from "react";
 import { Text, BoxProps } from "rebass";
+import NewBadge from "../newBadge/NewBadge";
 
-interface WidgetHeaderProps extends BoxProps {
+type WidgetHeaderProps = BoxProps & {
   title: string;
-  bgColor?: boolean;
   children?: never;
-}
+} & typeof defaultProps;
 
-function WidgetHeader({ title, bgColor, ...rest }: WidgetHeaderProps) {
+const defaultProps = {
+  isNew: false
+};
+
+function WidgetHeader({ title, isNew, ...rest }: WidgetHeaderProps) {
   return (
     <Text
       as="strong"
       sx={{
         display: "block",
         py: "10px",
-        bg: bgColor ? "base" : "none",
+        bg: "base",
         textAlign: "center",
         fontSize: "15px"
       }}
       {...rest}
     >
-      {title}
+      <Text sx={{ position: "relative", display: "inline-block" }}>
+        {title} {isNew && <NewBadge></NewBadge>}
+      </Text>
     </Text>
   );
 }
 
-WidgetHeader.defaultProps = {
-  bgColor: true
-};
+WidgetHeader.defaultProps = defaultProps;
 
 export default WidgetHeader;

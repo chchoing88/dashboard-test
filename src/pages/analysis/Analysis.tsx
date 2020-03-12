@@ -4,7 +4,7 @@ import { randomUserApi } from "api";
 
 import AnalysisTemplate from "component/templates/AnalysisTemplate";
 import AnalysisInfo from "component/organisms/analysisInfo/AnalysisInfo";
-import AnalysisContens from "component/organisms/analysisContents/AnalysisContents";
+import AnalysisContents from "component/organisms/analysisContents/AnalysisContents";
 import LookupSection from "component/molecules/lookupSection/LookupSection";
 import { IRandomUserResponse } from "types";
 
@@ -26,11 +26,11 @@ function Analysis() {
       title={<AnalysisInfo></AnalysisInfo>}
       lookUp={<LookupSection onClick={onClickHandler}></LookupSection>}
       contents={
-        <AnalysisContens
+        <AnalysisContents
           analysisData={responseStatus}
           error={randomState.error}
           isLoading={randomState.isLoading}
-        ></AnalysisContens>
+        ></AnalysisContents>
       }
     ></AnalysisTemplate>
   );

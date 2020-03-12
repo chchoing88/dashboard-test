@@ -26,21 +26,22 @@ type ProfileGroup = {
 function ProfileGroup({ profileData }: ProfileGroup) {
   return (
     <RowGrid>
-      <ColGrid col={3}>
+      <ColGrid col={4}>
         <ProfileCard
           title="관심사 태그"
           profileList={profileData.ufointerest}
         ></ProfileCard>
       </ColGrid>
-      <ColGrid col={3}>
+      <ColGrid col={4}>
         <ProfileCard
           title="사용업종 태그"
           profileList={profileData.ufopoi}
         ></ProfileCard>
       </ColGrid>
-      <ColGrid col={3}>
+      <ColGrid col={4}>
         <ProfileCard
           title="소비 태그"
+          isNew={true}
           profileList={profileData.ufoconsume}
         ></ProfileCard>
       </ColGrid>

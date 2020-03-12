@@ -3,8 +3,11 @@ import FilterButton from "component/atoms/filterButton/FilterButton";
 import { IFilterItem, FilterClickHandler } from "types";
 
 type FilterButtonGroupProps = {
-  filterButtonList: IFilterItem[];
   onClick: FilterClickHandler;
+} & typeof defaultProps;
+
+const defaultProps = {
+  filterButtonList: [] as IFilterItem[]
 };
 
 function FilterButtonGroup({
@@ -16,7 +19,9 @@ function FilterButtonGroup({
       {filterButtonList.map(buttonItem => (
         <FilterButton
           key={buttonItem.id}
-          buttonItem={buttonItem}
+          name={buttonItem.name}
+          isActive={buttonItem.isActive}
+          isDisable={buttonItem.isDisable}
           onClick={e => onClick(buttonItem.id)}
         />
       ))}
@@ -24,8 +29,6 @@ function FilterButtonGroup({
   );
 }
 
-FilterButtonGroup.defaultProps = {
-  filterButtonList: []
-};
+FilterButtonGroup.defaultProps = defaultProps;
 
 export default FilterButtonGroup;

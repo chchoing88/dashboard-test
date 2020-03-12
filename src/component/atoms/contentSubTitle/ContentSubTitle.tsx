@@ -1,9 +1,9 @@
 import React from "react";
 import { Text, TextProps } from "rebass";
 
-interface ContentSubTitleProps extends TextProps {
+type ContentSubTitleProps = TextProps & {
   children: React.ReactNode;
-}
+};
 
 function ContentSubTitle({ children, ...rest }: ContentSubTitleProps) {
   return (

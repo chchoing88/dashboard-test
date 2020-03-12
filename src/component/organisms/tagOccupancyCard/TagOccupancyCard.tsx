@@ -3,6 +3,7 @@ import useTab from "hooks/useTab";
 import useApiObservable from "hooks/useApiObservable";
 import { occupancyApi } from "api";
 
+import { Box } from "rebass";
 import WidgetCard from "component/atoms/widgetCard/WidgetCard";
 import WidgetHeader from "component/atoms/widgetHeader/WidgetHeader";
 import TabGroup from "component/molecules/tabGroup/TabGroup";
@@ -10,6 +11,7 @@ import TagOccupancySunburstChart from "component/molecules/tagOccupancySunburstC
 import ErrorBoundary from "component/atoms/errorBoundary/ErrorBoundary";
 import LoadBoundary from "component/atoms/loadBoundary/LoadBoundary";
 import StatusError from "component/atoms/statusError/StatusError";
+import BigReady from "component/molecules/bigReady/BigReady";
 
 import { TAB_OCCUPANCY_LIST } from "../../../constants";
 
@@ -18,11 +20,12 @@ import {
   IOccupancyApiFetchParameter,
   IOccupancyItem
 } from "types";
-import { Box } from "rebass";
 
 type TagOccupancyCardProps = {
   currentFilterData: IFilterItem;
 };
+
+const MIN_CHART_LIST = 1;
 
 function TagOccupancyCard({ currentFilterData }: TagOccupancyCardProps) {
   const { tabList, onHandleTabClick, currentTabData } = useTab(
@@ -39,8 +42,11 @@ function TagOccupancyCard({ currentFilterData }: TagOccupancyCardProps) {
     });
   }, [subject$, currentFilterData, currentTabData]);
 
-  const responseOccupancy = occupancyState.success
-    ?.response as IOccupancyItem[];
+  const responseOccupancy = occupancyState.success?.response as
+    | IOccupancyItem[]
+    | undefined;
+  const isOccupancyDataList =
+    responseOccupancy && responseOccupancy.length > MIN_CHART_LIST;
 
   return (
     <WidgetCard>
@@ -60,11 +66,15 @@ function TagOccupancyCard({ currentFilterData }: TagOccupancyCardProps) {
             errorComponent={<StatusError />}
           >
             <TabGroup tabList={tabList} onClick={onHandleTabClick}></TabGroup>
-            {responseOccupancy && (
-              <TagOccupancySunburstChart
-                occupancyDataList={responseOccupancy}
-              />
-            )}
+            {responseOccupancy ? (
+              isOccupancyDataList ? (
+                <TagOccupancySunburstChart
+                  occupancyDataList={responseOccupancy}
+                />
+              ) : (
+                <BigReady></BigReady>
+              )
+            ) : null}
           </ErrorBoundary>
         </LoadBoundary>
       </Box>

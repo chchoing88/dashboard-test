@@ -9,19 +9,29 @@ import TagTopBarChart from "component/molecules/tagTopBarChart/TagTopBarChart";
 import LoadBoundary from "component/atoms/loadBoundary/LoadBoundary";
 import ErrorBoundary from "component/atoms/errorBoundary/ErrorBoundary";
 import StatusError from "component/atoms/statusError/StatusError";
+import BigReady from "component/molecules/bigReady/BigReady";
 
-import { TAB_TOP_LIST } from "../../../constants";
+import {
+  TAB_TOP_LIST,
+  TAG_TOP_TYPE,
+  TAG_TOP_BAR_COLOR
+} from "../../../constants";
 
 import { IUFOTagTop, IAPIError } from "types";
 
 type tagTopCardProps = {
-  tagTopData: IUFOTagTop;
+  tagTopData: IUFOTagTop | undefined;
   error: IAPIError;
   isLoading: boolean;
 };
 
 function TagTopCard({ tagTopData, isLoading, error }: tagTopCardProps) {
   const { tabList, onHandleTabClick, currentTabData } = useTab(TAB_TOP_LIST);
+  const tagTopList = tagTopData
+    ? tagTopData[TAG_TOP_TYPE[currentTabData.id]]
+    : [];
+  const tagBarColor = TAG_TOP_BAR_COLOR[TAG_TOP_TYPE[currentTabData.id]];
+  const isTagTopList = tagTopList.length > 0;
 
   return (
     <WidgetCard>
@@ -35,12 +45,16 @@ function TagTopCard({ tagTopData, isLoading, error }: tagTopCardProps) {
         <LoadBoundary isLoading={isLoading} css={{ paddingTop: "65px" }}>
           <ErrorBoundary isError={!!error} errorComponent={<StatusError />}>
             <TabGroup tabList={tabList} onClick={onHandleTabClick}></TabGroup>
-            {tagTopData && (
-              <TagTopBarChart
-                tagTopData={tagTopData}
-                currentTabData={currentTabData}
-              ></TagTopBarChart>
-            )}
+            {tagTopData ? (
+              isTagTopList ? (
+                <TagTopBarChart
+                  tagTopList={tagTopList}
+                  tagBarColor={tagBarColor}
+                ></TagTopBarChart>
+              ) : (
+                <BigReady></BigReady>
+              )
+            ) : null}
           </ErrorBoundary>
         </LoadBoundary>
       </Box>

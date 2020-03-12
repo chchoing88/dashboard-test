@@ -1,9 +1,9 @@
 import React from "react";
 import { Text, TextProps } from "rebass";
 
-interface StrongProps extends TextProps {
+type StrongProps = TextProps & {
   children: React.ReactNode;
-}
+};
 
 function Strong({ children, ...rest }: StrongProps) {
   return (

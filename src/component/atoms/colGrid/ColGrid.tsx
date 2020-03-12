@@ -1,10 +1,13 @@
 import React from "react";
 import { Box, BoxProps } from "rebass";
 
-interface ColGridProps extends BoxProps {
+type ColGridProps = BoxProps & {
   children: React.ReactNode;
-  col: number;
-}
+} & typeof defaultProps;
+
+const defaultProps = {
+  col: 12
+};
 
 function ColGrid({ children, col, ...rest }: ColGridProps) {
   return (
@@ -12,7 +15,7 @@ function ColGrid({ children, col, ...rest }: ColGridProps) {
       sx={{
         position: "relative",
         float: "left",
-        width: `${100 / col}%`,
+        width: `${(100 / 12) * col}%`,
         px: 3
       }}
       {...rest}
@@ -22,8 +25,6 @@ function ColGrid({ children, col, ...rest }: ColGridProps) {
   );
 }
 
-ColGrid.defaultProps = {
-  col: 12
-};
+ColGrid.defaultProps = defaultProps;
 
 export default ColGrid;

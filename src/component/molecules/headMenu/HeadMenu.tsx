@@ -41,10 +41,10 @@ function HeadMenu() {
           textAlign: "left"
         }}
       >
-        <MenuLink href="www.naver.com" isOutLink={true}>
-          아지트 바로가기
-        </MenuLink>
-        <MenuLink href="" isOutLink={true}>
+        <MenuLink
+          href="https://kakao.agit.in/g/433695/wall/319152716"
+          isOutLink={true}
+        >
           UFO 업데이트 소식
         </MenuLink>
 
@@ -71,15 +71,15 @@ function HeadMenu() {
             서비스 더보기
           </Text>
         </Box>
-        <MenuLink href="www.naver.com" isOutLink={true}>
+        <MenuLink href="http://datazoo.devel.kakao.com/" isOutLink={true}>
           Data ZOO
         </MenuLink>
-        <MenuLink href="www.naver.com" isOutLink={true}>
+        <MenuLink href="http://atm-web.daumtools.com/" isOutLink={true}>
           ATM
         </MenuLink>
-        <MenuLink href="www.naver.com" isOutLink={true}>
+        {/* <MenuLink href="www.naver.com" isOutLink={true}>
           WAY 대시보드
-        </MenuLink>
+        </MenuLink> */}
       </Box>
     </Box>
   );

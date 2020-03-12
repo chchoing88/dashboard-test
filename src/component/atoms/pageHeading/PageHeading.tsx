@@ -1,9 +1,9 @@
 import React from "react";
 import { Heading, HeadingProps } from "rebass";
 
-interface PageHeadingProps extends HeadingProps {
+type PageHeadingProps = HeadingProps & {
   children: React.ReactNode;
-}
+};
 
 function PageHeading({ children, ...rest }: PageHeadingProps) {
   return (

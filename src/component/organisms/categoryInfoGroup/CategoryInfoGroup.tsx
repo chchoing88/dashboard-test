@@ -16,21 +16,21 @@ type CategoryInfoGroupProps = {
 function CategoryInfoGroup({ categoryData }: CategoryInfoGroupProps) {
   return (
     <FlexRow>
-      <FlexCol col={3}>
+      <FlexCol col={4}>
         <CategoryInfoCard
           title="플친 메세지 수신"
           tooltipId="plusfriend"
           categoryList={categoryData.pfmessage}
         ></CategoryInfoCard>
       </FlexCol>
-      <FlexCol col={3}>
+      <FlexCol col={4}>
         <CategoryInfoCard
           title="카카오 로그인"
           tooltipId="login"
           categoryList={categoryData.loginapi}
         ></CategoryInfoCard>
       </FlexCol>
-      <FlexCol col={3}>
+      <FlexCol col={4}>
         <CategoryInfoCard
           title="검색 카테고리"
           tooltipId="search"

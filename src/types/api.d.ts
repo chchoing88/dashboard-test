@@ -12,10 +12,10 @@ export interface IAPIResponse {
 
 // overall
 export interface IUFOStatus {
-  overall: string | number;
-  interest: string | number;
-  poi: string | number;
-  consume: string | number;
+  overall: number;
+  interest: number;
+  poi: number;
+  consume: number;
 }
 
 export interface IUFOStatusGroup {

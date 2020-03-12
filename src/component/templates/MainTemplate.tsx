@@ -28,8 +28,8 @@ function MainTemplate({
         <Box sx={{ mt: 5 }}>{status}</Box>
         <Box sx={{ mt: 6 }}>
           <RowGrid>
-            <ColGrid width="66.66%">{occupancy}</ColGrid>
-            <ColGrid width="33.33%">{top}</ColGrid>
+            <ColGrid col={8}>{occupancy}</ColGrid>
+            <ColGrid col={4}>{top}</ColGrid>
           </RowGrid>
         </Box>
       </Box>

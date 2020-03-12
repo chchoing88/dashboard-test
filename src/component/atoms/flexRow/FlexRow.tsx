@@ -1,9 +1,9 @@
 import React from "react";
 import { Flex, FlexProps } from "rebass";
 
-interface FlexRowProps extends FlexProps {
+type FlexRowProps = FlexProps & {
   children: React.ReactNode;
-}
+};
 
 function FlexRow({ children, ...rest }: FlexRowProps) {
   return (

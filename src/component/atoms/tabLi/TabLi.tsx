@@ -1,14 +1,15 @@
 import React from "react";
 import { Box, BoxProps } from "rebass";
 
+import { TabThemeType } from "types";
 import { THEME } from "./TabLi.styled";
 
-interface TabLiProps extends BoxProps {
+type TabLiProps = BoxProps & {
   children: React.ReactNode;
   isActive: boolean;
-  theme: "underLine" | "fill";
+  theme: TabThemeType;
   index: number;
-}
+};
 
 function TabLi({ children, isActive, theme, index, ...rest }: TabLiProps) {
   return (

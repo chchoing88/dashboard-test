@@ -1,4 +1,10 @@
-import { INaviItem, ITabItem, IFilterItem, IUfoCategoryIdValue } from "types";
+import {
+  INaviItem,
+  ITabItem,
+  IFilterItem,
+  IUfoCategoryIdValue,
+  TagTopType
+} from "types";
 export const NAVI_INIT_STATE: INaviItem[] = [
   {
     id: "home",
@@ -18,9 +24,14 @@ export const NAVI_INIT_STATE: INaviItem[] = [
 ];
 
 export const FILTER_LIST: IFilterItem[] = [
-  { id: "adid", name: "adid", isActive: true },
-  { id: "aid", name: "aid", isActive: false },
-  { id: "accountId", name: "account id", isActive: false }
+  { id: "adid", name: "adid", isActive: true, isDisable: false },
+  { id: "aid", name: "aid", isActive: false, isDisable: false },
+  {
+    id: "accountId",
+    name: "account id (준비중)",
+    isActive: false,
+    isDisable: true
+  }
 ];
 
 export const TAB_OCCUPANCY_LIST: ITabItem<
@@ -33,13 +44,14 @@ export const TAB_OCCUPANCY_LIST: ITabItem<
   },
   {
     id: "P",
-    name: "업종",
+    name: "서비스 업종",
     isActive: false
   },
   {
     id: "C",
     name: "소비",
-    isActive: false
+    isActive: false,
+    isNew: true
   }
 ];
 
@@ -49,22 +61,23 @@ export const TAB_TOP_LIST: ITabItem<
   {
     id: "ALL",
     name: "전체",
-    isActive: true
+    isActive: false
   },
   {
     id: "I",
     name: "관심사",
-    isActive: false
+    isActive: true
   },
   {
     id: "P",
-    name: "업종",
+    name: "서비스 업종",
     isActive: false
   },
   {
     id: "C",
     name: "소비",
-    isActive: false
+    isActive: false,
+    isNew: true
   }
 ];
 
@@ -78,7 +91,7 @@ export const CATEGORY_TAB_LIST: ITabItem<
   },
   {
     id: "P",
-    name: "업종",
+    name: "서비스 업종",
     isActive: false
   },
   {
@@ -97,3 +110,17 @@ export const CATEGORY_TAB_LIST: ITabItem<
     isActive: false
   }
 ];
+
+export const TAG_TOP_TYPE: TagTopType = {
+  ALL: "overall",
+  I: "interest",
+  P: "poi",
+  C: "consume"
+};
+
+export const TAG_TOP_BAR_COLOR = {
+  overall: "#ababd3",
+  interest: "#7095CC",
+  poi: "#a682c9",
+  consume: "#B456A2"
+};
