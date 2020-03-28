@@ -43,7 +43,7 @@ function CategoryInfoCard({
               .slice(START_INDEX, LAST_INDEX)
               .map((categoryItem, index) => (
                 <CategoryItem
-                  key={categoryItem.categoryname}
+                  key={`${categoryItem.categoryname}${index}`}
                   tooltipId={tooltipId}
                   index={index}
                   categoryItem={categoryItem}

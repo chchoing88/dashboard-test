@@ -5,7 +5,8 @@ import { switchMap, tap, filter } from "rxjs/operators";
 import { IAPIResponse } from "types";
 
 function useApiObservable<T>(
-  api$: (value: T) => Observable<IAPIResponse>
+  api$: (value: T) => Observable<IAPIResponse>,
+  isSetLoading: boolean = true
 ): [IAPIResponse, Subject<T>] {
   const [state, setState] = useState<IAPIResponse>({
     success: null,
@@ -18,19 +19,21 @@ function useApiObservable<T>(
     const sub = subject$
       .pipe(
         filter(triggerData => triggerData !== null),
-        tap(_ =>
-          setState(beforeState => ({
-            success: beforeState.success,
-            error: beforeState.error,
-            isLoading: true
-          }))
+        tap(
+          _ =>
+            isSetLoading &&
+            setState(beforeState => ({
+              success: beforeState.success,
+              error: null,
+              isLoading: true
+            }))
         ),
         switchMap(value => api$(value))
       )
       .subscribe(setState);
 
     return () => sub.unsubscribe();
-  }, [subject$, api$]);
+  }, [subject$, api$, isSetLoading]);
 
   // return { ...state, subject$ };
   return [state, subject$];

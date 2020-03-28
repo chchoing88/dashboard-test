@@ -77,14 +77,7 @@ input:checked[type="checkbox"] {
   background-color: #666;
   -webkit-appearance: checkbox;
 }
-input[type="text"],
-input[type="password"],
-input[type="submit"],
-input[type="search"],
-input[type="tel"],
-input[type="email"],
-html input[type="button"],
-input[type="reset"] {
+input {
   -webkit-appearance: none;
   border-radius: 0;
 }

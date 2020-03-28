@@ -8,8 +8,8 @@ import WidgetCard from "component/atoms/widgetCard/WidgetCard";
 import WidgetHeader from "component/atoms/widgetHeader/WidgetHeader";
 import TabGroup from "component/molecules/tabGroup/TabGroup";
 import TagOccupancySunburstChart from "component/molecules/tagOccupancySunburstChart/TagOccupancySunburstChart";
-import ErrorBoundary from "component/atoms/errorBoundary/ErrorBoundary";
-import LoadBoundary from "component/atoms/loadBoundary/LoadBoundary";
+import ErrorBoundary from "component/common/errorBoundary/ErrorBoundary";
+import LoadBoundary from "component/common/loadBoundary/LoadBoundary";
 import StatusError from "component/atoms/statusError/StatusError";
 import BigReady from "component/molecules/bigReady/BigReady";
 
@@ -62,7 +62,7 @@ function TagOccupancyCard({ currentFilterData }: TagOccupancyCardProps) {
           css={{ paddingTop: "65px" }}
         >
           <ErrorBoundary
-            isError={!!occupancyState.error}
+            error={occupancyState.error}
             errorComponent={<StatusError />}
           >
             <TabGroup tabList={tabList} onClick={onHandleTabClick}></TabGroup>

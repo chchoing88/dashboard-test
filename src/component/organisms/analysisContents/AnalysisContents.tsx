@@ -8,8 +8,8 @@ import CategoryInfoGroup from "component/organisms/categoryInfoGroup/CategoryInf
 import ContentTitle from "component/atoms/contentTitle/ContentTitle";
 import ContentSubTitle from "component/atoms/contentSubTitle/ContentSubTitle";
 
-import LoadBoundary from "component/atoms/loadBoundary/LoadBoundary";
-import ErrorBoundary from "component/atoms/errorBoundary/ErrorBoundary";
+import LoadBoundary from "component/common/loadBoundary/LoadBoundary";
+import ErrorBoundary from "component/common/errorBoundary/ErrorBoundary";
 import StatusError from "component/atoms/statusError/StatusError";
 import IntroAnalysis from "component/molecules/introAnalysis/IntroAnalysis";
 
@@ -30,7 +30,7 @@ function AnalysisContents({
     <IntroAnalysis></IntroAnalysis>
   ) : (
     <LoadBoundary isLoading={isLoading}>
-      <ErrorBoundary isError={!!error} errorComponent={<StatusError />}>
+      <ErrorBoundary error={error} errorComponent={<StatusError />}>
         {analysisData && (
           <>
             <Box sx={{ mt: 5 }}>

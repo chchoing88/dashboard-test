@@ -2,7 +2,7 @@ import iconComm from "../../../assets/images/ico_comm_x2.png";
 
 const commIconStyle = {
   backgroundImage: `url(${iconComm})`,
-  backgroundSize: "50px 30px"
+  backgroundSize: "50px 40px"
 };
 
 export const iconCollection = {
@@ -19,5 +19,14 @@ export const iconCollection = {
     width: "11px",
     height: "11px",
     verticalAlign: "top"
+  },
+  circleDel: {
+    ...commIconStyle,
+    backgroundPosition: "0 -20px",
+    width: "16px",
+    height: "16px",
+    "&:hover": {
+      backgroundPosition: "-20px -20px"
+    }
   }
 };

@@ -20,7 +20,7 @@ function LookupSection({ onClick }: LookupSection) {
       >
         사용자 프로파일 조회
       </SectionTitle>
-      <Button sx={{ mt: "-3px", bg: "point" }} onClick={onClick}>
+      <Button variant="normal" sx={{ mt: "-3px" }} onClick={onClick}>
         <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
         <Text as="span" sx={{ pl: 2 }}>
           랜덤 유저 조회

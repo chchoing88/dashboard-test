@@ -1,14 +1,39 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
+
+import { AuthAPi } from "api";
+import useApiObservable from "hooks/useApiObservable";
+import { useAuthDispatch } from "contexts/AuthContext";
+import { useModalDispatch } from "contexts/ModalContext";
+
 import useMenu from "hooks/useMenu";
 import { Button, Box, Text } from "rebass";
 
 import Icon from "component/atoms/icon/Icon";
 import MenuLink from "component/atoms/menuLink/MenuLink";
 
-// type HeadMenuProps = {};
-
 function HeadMenu() {
   const { menuState, onMenuToggle } = useMenu();
+  const [logoutState, subject$] = useApiObservable(AuthAPi.logout);
+
+  const authDispatch = useAuthDispatch();
+  const modalDispatch = useModalDispatch();
+
+  const logout = (e: React.MouseEvent) => {
+    e.preventDefault();
+    subject$.next();
+  };
+
+  const logoutSuccess = logoutState.success?.status as number | undefined;
+  const logoutError = logoutState.error;
+  if (logoutSuccess === 200) {
+    authDispatch({ type: "LOGOUT" });
+    return <Redirect to={"/login"} />;
+  }
+
+  if (logoutError?.status === 403) {
+    modalDispatch({ type: "OPEN", modalType: "SESSION_EXPIRE" });
+  }
 
   return (
     <Box
@@ -46,6 +71,10 @@ function HeadMenu() {
           isOutLink={true}
         >
           UFO 업데이트 소식
+        </MenuLink>
+
+        <MenuLink href="#none" onClick={logout}>
+          로그아웃
         </MenuLink>
 
         <Box

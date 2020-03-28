@@ -66,4 +66,4 @@ export type IDataCollectionNameValue = Readonly<
   IDataCollectionName
 >[keyof IDataCollectionName];
 
-export type IconType = "menu" | "outLink";
+export type IconType = "menu" | "outLink" | "circleDel";

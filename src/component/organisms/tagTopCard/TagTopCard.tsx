@@ -6,8 +6,8 @@ import WidgetCard from "component/atoms/widgetCard/WidgetCard";
 import WidgetHeader from "component/atoms/widgetHeader/WidgetHeader";
 import TabGroup from "component/molecules/tabGroup/TabGroup";
 import TagTopBarChart from "component/molecules/tagTopBarChart/TagTopBarChart";
-import LoadBoundary from "component/atoms/loadBoundary/LoadBoundary";
-import ErrorBoundary from "component/atoms/errorBoundary/ErrorBoundary";
+import LoadBoundary from "component/common/loadBoundary/LoadBoundary";
+import ErrorBoundary from "component/common/errorBoundary/ErrorBoundary";
 import StatusError from "component/atoms/statusError/StatusError";
 import BigReady from "component/molecules/bigReady/BigReady";
 
@@ -43,7 +43,7 @@ function TagTopCard({ tagTopData, isLoading, error }: tagTopCardProps) {
         }}
       >
         <LoadBoundary isLoading={isLoading} css={{ paddingTop: "65px" }}>
-          <ErrorBoundary isError={!!error} errorComponent={<StatusError />}>
+          <ErrorBoundary error={error} errorComponent={<StatusError />}>
             <TabGroup tabList={tabList} onClick={onHandleTabClick}></TabGroup>
             {tagTopData ? (
               isTagTopList ? (

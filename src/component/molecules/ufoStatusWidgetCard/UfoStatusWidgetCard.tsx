@@ -11,8 +11,8 @@ import RowGrid from "component/atoms/rowGrid/RowGrid";
 import ColGrid from "component/atoms/colGrid/ColGrid";
 import VerticalBoundaryBar from "component/atoms/verticalBoundaryBar/VerticalBoundaryBar";
 
-import LoadBoundary from "component/atoms/loadBoundary/LoadBoundary";
-import ErrorBoundary from "component/atoms/errorBoundary/ErrorBoundary";
+import LoadBoundary from "component/common/loadBoundary/LoadBoundary";
+import ErrorBoundary from "component/common/errorBoundary/ErrorBoundary";
 import StatusError from "component/atoms/statusError/StatusError";
 
 import SubUfoStatus from "component/molecules/subUfoStatus/SubUfoStatus";
@@ -43,7 +43,7 @@ function UfoStatusWidgetCard({
         }}
       >
         <LoadBoundary css={{ paddingTop: "65px" }} isLoading={isLoading}>
-          <ErrorBoundary isError={!!error} errorComponent={<StatusError />}>
+          <ErrorBoundary error={error} errorComponent={<StatusError />}>
             {status && (
               <>
                 <EmpFigures

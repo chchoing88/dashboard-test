@@ -1,7 +1,8 @@
 import React from "react";
 import { INaviItem } from "types";
 
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
+import AuthLink from "component/common/authLink/AuthLink";
 import { Box } from "rebass";
 import { styleNaviLink } from "./Navi.styled";
 
@@ -15,9 +16,9 @@ function Navi({ naviItem }: NaviProps) {
 
   return (
     <Box as="li" sx={styleNaviLink}>
-      <NavLink exact to={path} activeClassName="active">
+      <AuthLink exact to={path} activeClassName="active">
         {name}
-      </NavLink>
+      </AuthLink>
     </Box>
   );
 }

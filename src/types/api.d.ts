@@ -168,3 +168,21 @@ export interface IModificationTimeResponse {
 export interface IModificationTimeApi {
   fetch: () => Observable<IAPIResponse>;
 }
+
+// auth
+
+export interface IAuthApi {
+  login: ($elemForm: HTMLFormElement) => Observable<IAPIResponse>;
+  check: () => Observable<IAPIResponse>;
+  logout: () => Observable<IAPIResponse>;
+}
+
+// 100: 성공 101 :아이디 틀림 102: 패스워드 틀림 103: 권한없음
+export interface LoginResponse {
+  login_code: "100" | "101" | "102" | "103";
+  username: string;
+}
+export interface CheckResponse {
+  valid: boolean;
+  name?: string;
+}

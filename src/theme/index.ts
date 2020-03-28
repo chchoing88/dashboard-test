@@ -22,6 +22,9 @@ const theme: Thmeme = {
   fontSizes: [12, 14, 16, 20, 24, 28, 32, 48, 64],
   space: [0, 4, 8, 16, 24, 32, 48, 64, 128, 256],
   text: {
+    loginLogo: {
+      fontSize: 6
+    },
     heading: {
       fontSize: 3
     },
@@ -40,8 +43,15 @@ const theme: Thmeme = {
     button: "1px 2px 4px rgba(150,170,180,0.5)"
   },
   buttons: {
-    identifier: {
+    normal: {
       bg: "point"
+    },
+    login: {
+      bg: "#f9df33",
+      height: "64px",
+      color: "#222",
+      fontSize: 3,
+      width: "100%"
     }
   },
   variants: {

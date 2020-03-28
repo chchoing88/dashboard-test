@@ -6,6 +6,7 @@ import {
 } from "./common";
 export * from "./common";
 export * from "./api";
+export * from "./auth";
 
 export interface IFilterItem extends IActiveBehavior<IDataCollectionIdValue> {
   name: string;
@@ -34,3 +35,5 @@ export type TabThemeType = "underLine" | "fill";
 export interface LooseObject {
   [key: string]: any;
 }
+
+export type ModalType = "SESSION_EXPIRE" | "DEFAULT";

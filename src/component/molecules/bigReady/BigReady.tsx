@@ -7,9 +7,9 @@ function BigReady() {
   return (
     <Box
       sx={{
-        pt: "30px",
+        pt: 5,
         color: "content",
-        fontSize: "25px",
+        fontSize: 4,
         textAlign: "center"
       }}
     >

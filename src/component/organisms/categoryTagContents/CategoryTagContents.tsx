@@ -9,8 +9,8 @@ import TagTreeChart from "component/molecules/tagTreeChart/TagTreeChart";
 
 import { CATEGORY_TAB_LIST } from "../../../constants";
 import { ITagTreeApiFetchParameter, ITagTreeItem } from "types";
-import LoadBoundary from "component/atoms/loadBoundary/LoadBoundary";
-import ErrorBoundary from "component/atoms/errorBoundary/ErrorBoundary";
+import LoadBoundary from "component/common/loadBoundary/LoadBoundary";
+import ErrorBoundary from "component/common/errorBoundary/ErrorBoundary";
 import StatusError from "component/atoms/statusError/StatusError";
 
 const NODE_HEIGHT = 25;
@@ -50,7 +50,7 @@ function CategoryTagContents() {
           css={{ padding: "100px 0" }}
         >
           <ErrorBoundary
-            isError={!!tagTreeState.error}
+            error={tagTreeState.error}
             errorComponent={<StatusError></StatusError>}
             css={{ padding: "100px 0" }}
           >

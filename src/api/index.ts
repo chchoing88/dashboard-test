@@ -8,14 +8,15 @@ import {
   IRandomUserApi,
   IAPIResponse,
   ITagTreeApi,
-  IModificationTimeApi
+  IModificationTimeApi,
+  IAuthApi
 } from "../types";
 import { catchError } from "rxjs/operators";
 
 const DOMAIN =
   process.env.REACT_APP_DEV === "development"
-    ? `http://10.195.11.33:28888/api/test`
-    : `http://ufo-api.devel.kakao.com/api/test`;
+    ? `//ufo-dashboard-api.dev.devel.kakao.com/api/v1`
+    : `//ufo-api.devel.kakao.com/api/v1`;
 
 const successFn = (success: AjaxResponse): Observable<IAPIResponse> => {
   return of({
@@ -33,8 +34,12 @@ const errorFn = (error: AjaxError): Observable<IAPIResponse> => {
   });
 };
 
-const request = ({ url, method }: AjaxRequest): Observable<IAPIResponse> => {
-  return ajax({ url, method, timeout: 5000 }).pipe(
+const request = ({
+  url,
+  method,
+  body
+}: AjaxRequest): Observable<IAPIResponse> => {
+  return ajax({ url, method, body, timeout: 5000, withCredentials: true }).pipe(
     catchError(error => of(error)),
     mergeMap(result =>
       iif(
@@ -89,6 +94,30 @@ export const modificationTimeApi: IModificationTimeApi = {
   fetch() {
     return request({
       url: `${DOMAIN}/modification_time`,
+      method: "GET"
+    });
+  }
+};
+
+export const AuthAPi: IAuthApi = {
+  login($elemForm) {
+    const formData = new FormData($elemForm);
+    formData.set("isKeep", formData.has("isKeep") ? "true" : "false");
+    return request({
+      url: `${DOMAIN}/login`,
+      method: "POST",
+      body: formData
+    });
+  },
+  check() {
+    return request({
+      url: `${DOMAIN}/login/check`,
+      method: "GET"
+    });
+  },
+  logout() {
+    return request({
+      url: `${DOMAIN}/logout`,
       method: "GET"
     });
   }

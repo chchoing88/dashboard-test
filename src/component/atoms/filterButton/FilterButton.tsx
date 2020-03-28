@@ -2,7 +2,6 @@ import React from "react";
 import { Button, ButtonProps } from "rebass";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
-
 import { filterButtonStyle } from "./FilterButton.styled";
 
 type FilterButtonProps = ButtonProps & {
@@ -25,9 +24,9 @@ function FilterButton({
 }: FilterButtonProps) {
   return (
     <Button
-      variant="identifier"
       sx={filterButtonStyle(isActive, isDisable)}
-      onClick={isDisable ? () => {} : onClick}
+      onClick={onClick}
+      disabled={isDisable}
       {...rest}
     >
       {isActive && <FontAwesomeIcon icon={faCheck}></FontAwesomeIcon>}
